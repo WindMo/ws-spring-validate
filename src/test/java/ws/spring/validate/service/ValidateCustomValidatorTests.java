@@ -15,7 +15,7 @@ import ws.spring.validate.dto.Money;
  */
 
 @Slf4j
-public class ValidateCustomValidatorTest extends WsSpringValidateApplicationTests {
+public class ValidateCustomValidatorTests extends WsSpringValidateApplicationTests {
 
     @Autowired
     public ValidateCustomValidator serviceBean;
@@ -37,6 +37,5 @@ public class ValidateCustomValidatorTest extends WsSpringValidateApplicationTest
     public void validateMoneyOfReturn() {
         Assertions.assertDoesNotThrow(() -> serviceBean.validateMoneyOfReturn());
     }
-
 
 }

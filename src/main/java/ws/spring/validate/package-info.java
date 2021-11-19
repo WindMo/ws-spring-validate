@@ -20,6 +20,11 @@ import ws.spring.validate.controller.BasicTypeValidatedController;
 import ws.spring.validate.controller.BeanValidatedController;
 import ws.spring.validate.util.ValidateUtils;
 
+/**
+ * 一个Helper
+ * @author WindShadow
+ * @version 2021-11-14.
+ */
 @Slf4j
 @Component
 class ValidateHelper implements ApplicationContextAware, ApplicationRunner {
@@ -29,8 +34,8 @@ class ValidateHelper implements ApplicationContextAware, ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        printBean(ValidDemoBean.class);
-        printBean(ValidatedDemoBean.class); // Spring创建bean时对其进行校验，对其进行了代理
+        printBean(ValidDemoBean.class);  // Spring创建bean时对其属性值不进行校验
+        printBean(ValidatedDemoBean.class); // Spring创建bean时对其属性值进行校验，对其进行了代理
 
         printBean(BeanValidatedController.class); // Controller 本身支持方法上校验bean，对其不代理
         printBean(BasicTypeValidatedController.class); // Controller 上使用了Validated注解，对其进行了代理
@@ -43,6 +48,9 @@ class ValidateHelper implements ApplicationContextAware, ApplicationRunner {
         helpValidateUtils();
     }
 
+    /**
+     * 给{@link ValidateUtils}设置国际化资源
+     */
     private void helpValidateUtils() {
 
         ValidateUtils.setMessageSource(this.applicationContext.getBean(MessageSource.class));
@@ -51,8 +59,8 @@ class ValidateHelper implements ApplicationContextAware, ApplicationRunner {
     private void printBean(Class<?> clazz) {
 
         Object bean = this.applicationContext.getBean(clazz);
-        // 打印bean 预期Class 真实Class bean.toString 内容
-        log.info("Bean - Class: {} RelClass: {} ToString: {}",clazz,bean.getClass(),bean);
+        // 打印bean 预期Class、真实Class、bean.toString 的内容
+        log.info("Bean - Class: {} RelClass: {} ToString: {}",clazz.getTypeName(),bean.getClass().getTypeName(),bean);
     }
 
 }

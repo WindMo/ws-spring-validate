@@ -17,15 +17,13 @@ import javax.validation.constraints.NotBlank;
 @Service
 public class GroupValidateOfService {
 
-    public String groupValidateBasicQuery(@NotBlank(groups = Group.Query.class) String keyword) {
+    public void groupValidateBasicQuery(@NotBlank(groups = Group.Query.class) String keyword) {
 
         log.info("keyword: {}",keyword);
-        return String.valueOf(keyword);
     }
 
-    public String groupValidateBasicDelete(@NotBlank(groups = Group.Delete.class) String keyword) {
+    public void groupValidateBasicDelete(@NotBlank(groups = Group.Delete.class) String keyword) {
 
         log.info("keyword: {}",keyword);
-        return String.valueOf(keyword);
     }
 }

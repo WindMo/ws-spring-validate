@@ -9,6 +9,7 @@ import ws.spring.validate.WsSpringValidateApplicationTests;
 import ws.spring.validate.dto.Person;
 import ws.spring.validate.dto.User;
 
+import javax.validation.ConstraintViolationException;
 import java.util.Collections;
 
 /**
@@ -18,7 +19,7 @@ import java.util.Collections;
  */
 
 @Slf4j
-public class ValidateServiceMethodParamTest extends WsSpringValidateApplicationTests {
+public class ValidateServiceMethodParamTests extends WsSpringValidateApplicationTests {
 
     @Autowired
     public ValidateServiceMethodParam serviceBean;
@@ -38,8 +39,8 @@ public class ValidateServiceMethodParamTest extends WsSpringValidateApplicationT
     @Test
     public void validateBeanByValidAnnotation() {
 
-        Exception e = Assertions.assertThrows(Exception.class, () -> serviceBean.validateBeanByValidAnnotation(person));
-        log.info("Exception: {}",e.getMessage());
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.validateBeanByValidAnnotation(person));
+        log.info("ConstraintViolationException: {}",e.getMessage());
     }
 
     @Test
@@ -51,20 +52,20 @@ public class ValidateServiceMethodParamTest extends WsSpringValidateApplicationT
     @Test
     public void validatedBasic() {
 
-        Exception e = Assertions.assertThrows(Exception.class, () -> serviceBean.validateBasic(blankString));
-        log.info("Exception: {}",e.getMessage());
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.validateBasic(blankString));
+        log.info("ConstraintViolationException: {}",e.getMessage());
     }
 
     @Test
     public void validateCollectionByValidAnnotation() {
 
-        Exception e = Assertions.assertThrows(Exception.class, () -> serviceBean.validateCollectionByValidAnnotation(Collections.singletonList(person)));
-        log.info("Exception: {}",e.getMessage());
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.validateCollectionByValidAnnotation(Collections.singletonList(person)));
+        log.info("ConstraintViolationException: {}",e.getMessage());
     }
 
     @Test
     public void validateCollectionByValidatedAnnotation() {
 
-       Assertions.assertDoesNotThrow(() -> serviceBean.validateCollectionByValidatedAnnotation(Collections.singletonList(user)));
+        Assertions.assertDoesNotThrow(() -> serviceBean.validateCollectionByValidatedAnnotation(Collections.singletonList(user)));
     }
 }

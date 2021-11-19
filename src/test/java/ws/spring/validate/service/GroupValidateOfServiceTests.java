@@ -6,13 +6,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ws.spring.validate.WsSpringValidateApplicationTests;
 
+import javax.validation.ConstraintViolationException;
+
 /**
  * @author WindShadow
  * @version 2021-11-17.
  */
 
 @Slf4j
-public class GroupValidateOfServiceTest extends WsSpringValidateApplicationTests {
+public class GroupValidateOfServiceTests extends WsSpringValidateApplicationTests {
 
     @Autowired
     public GroupValidateOfService serviceBean;
@@ -20,13 +22,13 @@ public class GroupValidateOfServiceTest extends WsSpringValidateApplicationTests
     @Test
     public void groupValidateBasicQuery() {
 
-        Exception e = Assertions.assertThrows(Exception.class, () -> serviceBean.groupValidateBasicQuery("  "));
-        log.info("Exception: {}",e.getMessage());
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.groupValidateBasicQuery("  "));
+        log.info("ConstraintViolationException: {}",e.getMessage());
     }
 
     @Test
     public void groupValidateBasicDelete() {
 
-       Assertions.assertDoesNotThrow(() -> serviceBean.groupValidateBasicDelete("  "));
+        Assertions.assertDoesNotThrow(() -> serviceBean.groupValidateBasicDelete("  "));
     }
 }

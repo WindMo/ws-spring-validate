@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 public class ValidateUtils {
 
-    /** 国家化消息转换对象 */
+    /** 国际化消息转换对象 */
     private static MessageSource messageSource;
     public static synchronized void setMessageSource(MessageSource messageSource) {
 

@@ -1,16 +1,17 @@
 package ws.spring.validate.expand;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.SmartValidator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import ws.spring.validate.dto.Person;
 import ws.spring.validate.util.JacksonUtils;
 import ws.spring.validate.util.ValidateUtils;
 
 import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
@@ -31,11 +32,33 @@ public class UseValidatorAnywhereExample {
     @Autowired
     protected ValidatorFactory validatorFactory;
 
-    public boolean validateBeanBySmartValidator(String personText) {
+    @Qualifier("defaultValidator")
+    @Autowired
+    protected Validator defaultValidator;
 
-        Person person = JacksonUtils.toObject(personText,Person.class);
+    @Autowired
+    protected LocalValidatorFactoryBean localValidatorFactoryBean;
+
+    public boolean validateBeanByValidatorFactory(String personText) {
+
         // javax包下的校验器而不是Spring的校验器
         Validator javaxValidator = validatorFactory.getValidator();
+        return doValidate(personText,javaxValidator);
+    }
+
+    public boolean validateBeanByDefaultValidatorBean(String personText) {
+
+        return doValidate(personText,defaultValidator);
+    }
+
+    public boolean validateBeanByLocalValidatorFactoryBean(String personText) {
+
+        return doValidate(personText,localValidatorFactoryBean);
+    }
+
+    private static boolean doValidate(String personText, Validator javaxValidator) {
+
+        Person person = JacksonUtils.toObject(personText,Person.class);
         // 校验结果
         Set<ConstraintViolation<Person>> violations = javaxValidator.validate(person);
         if (violations.isEmpty()) {
@@ -48,5 +71,10 @@ public class UseValidatorAnywhereExample {
         }
     }
 
+    public static boolean staticMethodUseValidatorFactoryOfBuild(String personText) {
 
+        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+        Validator validator = validatorFactory.getValidator();
+        return doValidate(personText,validator);
+    }
 }

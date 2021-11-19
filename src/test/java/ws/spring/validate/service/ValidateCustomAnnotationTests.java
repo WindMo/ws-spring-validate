@@ -8,13 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ws.spring.validate.WsSpringValidateApplicationTests;
 import ws.spring.validate.dto.Car;
 
+import javax.validation.ConstraintViolationException;
+
 /**
  * @author WindShadow
  * @version 2021-11-16.
  */
 
 @Slf4j
-public class ValidateCustomAnnotationTest extends WsSpringValidateApplicationTests {
+public class ValidateCustomAnnotationTests extends WsSpringValidateApplicationTests {
 
     @Autowired
     public ValidateCustomAnnotation serviceBean;
@@ -30,7 +32,7 @@ public class ValidateCustomAnnotationTest extends WsSpringValidateApplicationTes
     @Test
     public void validateColorOfCar() {
 
-        Exception e = Assertions.assertThrows(Exception.class, () -> serviceBean.validateColorOfCar(car));
-        log.info("Exception: {}",e.getMessage());
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.validateColorOfCar(car));
+        log.info("ConstraintViolationException: {}",e.getMessage());
     }
 }
