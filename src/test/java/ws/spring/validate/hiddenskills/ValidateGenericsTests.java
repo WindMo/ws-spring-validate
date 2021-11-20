@@ -1,12 +1,15 @@
 package ws.spring.validate.hiddenskills;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ws.spring.validate.WsSpringValidateApplicationTests;
+import ws.spring.validate.dto.Box;
 import ws.spring.validate.dto.Person;
 
+import javax.validation.ConstraintDeclarationException;
 import javax.validation.ConstraintViolationException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -77,7 +80,7 @@ public class ValidateGenericsTests extends WsSpringValidateApplicationTests {
     }
 
     @Test
-    public void validateGenericsOfMapKey() {
+    public void validateGenericsOfMapIntegerKey() {
 
         Map<Integer,Object> map = new HashMap<>();
         Object o = new Object();
@@ -86,12 +89,12 @@ public class ValidateGenericsTests extends WsSpringValidateApplicationTests {
         map.put(200,o); // true
         map.put(null,o); // true
 
-        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.validateGenericsOfMapKey(map));
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.validateGenericsOfMapIntegerKey(map));
         log.info("ConstraintViolationException: {}",e.getMessage());
     }
 
     @Test
-    public void validateGenericsOfMapValue() {
+    public void validateGenericsOfMapIntegerValue() {
 
         Map<Object,Integer> map = new HashMap<>();
         map.put(new Object(),10); // false
@@ -99,7 +102,7 @@ public class ValidateGenericsTests extends WsSpringValidateApplicationTests {
         map.put(new Object(),200); // true
         map.put(new Object(),null); // true
 
-        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.validateGenericsOfMapValue(map));
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.validateGenericsOfMapIntegerValue(map));
         log.info("ConstraintViolationException: {}",e.getMessage());
     }
 
@@ -123,6 +126,19 @@ public class ValidateGenericsTests extends WsSpringValidateApplicationTests {
         map.put(new Object(),null); // true
 
         ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.validateGenericsOfMapBeanValue(map));
+        log.info("ConstraintViolationException: {}",e.getMessage());
+    }
+
+    /**
+     * 失败，抛出约束声明异常 ==> Caused by: javax.validation.ConstraintDeclarationException: HV000197: No value extractor found for type parameter 'T' of type ws.spring.validate.dto.Box
+     *
+     */
+    @Test
+    @SneakyThrows(ConstraintDeclarationException.class)
+    public void validateGenericsOfJavaBean() {
+
+        Box<String> box = new Box<>("  ");
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.validateGenericsOfJavaBean(box));
         log.info("ConstraintViolationException: {}",e.getMessage());
     }
 }

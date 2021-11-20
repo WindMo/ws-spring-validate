@@ -3,6 +3,7 @@ package ws.spring.validate.hiddenskills;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import ws.spring.validate.dto.Box;
 import ws.spring.validate.dto.Person;
 
 import javax.validation.Valid;
@@ -45,10 +46,10 @@ public class ValidateGenerics {
     }
 
     /**
-     * 对比，校验集合复合类型泛型，bean类型
+     * 对比，校验集合bean类型泛型，bean类型
      *
      * @param personList
-     * @see ws.spring.validate.service.ValidateServiceMethodParam#validateCollectionByValidAnnotation(List) 对比校验bean集合
+     * @see ws.spring.validate.service.ValidateServiceMethodParam#validateCollectionByValidAnnotation(List) 一样的效果
      */
     public void validateGenericsOfBeanCollection(List<@Valid Person> personList) {
 
@@ -80,7 +81,7 @@ public class ValidateGenerics {
      *
      * @param map
      */
-    public void validateGenericsOfMapKey(Map<@Min(100) Integer,Object> map) {
+    public void validateGenericsOfMapIntegerKey(Map<@Min(100) Integer,Object> map) {
 
         log.info("map: {}",map);
     }
@@ -90,7 +91,7 @@ public class ValidateGenerics {
      *
      * @param map
      */
-    public void validateGenericsOfMapValue(Map<Object,@Min(100) Integer> map) {
+    public void validateGenericsOfMapIntegerValue(Map<Object,@Min(100) Integer> map) {
 
         log.info("map: {}",map);
     }
@@ -113,5 +114,17 @@ public class ValidateGenerics {
     public void validateGenericsOfMapBeanValue(Map<Object,@Valid Person> map) {
 
         log.info("map: {}",map);
+    }
+
+    /**
+     * 校验java类中的泛型，bean类型
+     *
+     * @param box
+     * @deprecated 无法校验java类中的泛型
+     */
+    @Deprecated
+    public void validateGenericsOfJavaBean(Box<@NotBlank String> box) {
+
+        log.info("box: {}",box);
     }
 }

@@ -11,6 +11,7 @@ import ws.spring.validate.validator.MoneyValidator;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
+import java.util.List;
 
 /**
  * {@link Valid}在Controller控制器中校验【bean类型】；关键：方法参数上加{@link Valid}注解
@@ -30,7 +31,7 @@ import javax.validation.constraints.Email;
 public class BeanValidController {
 
     /**
-     * 校验方法参数，bean类型
+     * {@link Valid}注解修饰方法参数，bean类型
      * @param person 实际校验{@link Person}内部被约束注解修饰的属性
      * @return
      */
@@ -42,7 +43,20 @@ public class BeanValidController {
     }
 
     /**
-     * 校验方法参数，非bean类型；无效
+     * {@link Valid}注解修饰方法参数，bean类型集合，无效
+     * @param personList
+     * @return
+     */
+    @Deprecated
+    @PostMapping("/method-param-bean-collection")
+    public String validatedMethodParamBeaCollection(@Valid @RequestBody List<Person> personList) {
+
+        log.info("personList: {}",personList);
+        return String.valueOf(personList);
+    }
+
+    /**
+     * {@link Valid}注解修饰方法参数，非bean类型；无效
      * @param email
      * @return
      * @deprecated 无效
@@ -56,7 +70,22 @@ public class BeanValidController {
     }
 
     /**
-     * 校验方法参数，bean类型，级联校验
+     * {@link Valid}注解修饰方法参数，非bean类型集合；无效
+     * 实际结果会抛异常，因为{@link Email}没有对应的验证集合的校验器
+     * @param emailList 此参数加不加{@link Valid}注解都是无效
+     * @return
+     * @deprecated 无效
+     */
+    @PostMapping("/method-param-basic-collection")
+    @Deprecated
+    public String validatedMethodParamBasicCollection(@Valid @Email List<String> emailList) {
+
+        log.info("emailList: {}",emailList);
+        return String.valueOf(emailList);
+    }
+
+    /**
+     * {@link Valid}注解修饰方法参数，bean类型，级联校验
      * @param people {@link People#getWrapper()} ()}被{@link Valid}修饰，触发级联校验，如不用{@link Valid}修饰，则不会校验该属性
      * @return
      */
@@ -68,7 +97,7 @@ public class BeanValidController {
     }
 
     /**
-     * 校验方法参数，bean类型
+     * {@link Valid}注解修饰方法参数，bean类型
      * 通过{@link #initWebDataBinder(WebDataBinder)}，注册自定义类校验器{@link MoneyValidator}
      * @param money 实际使用了自定义类校验器{@link MoneyValidator#validate(Object, Errors)} (Object, Errors)}校验{@link Money}
      * @return
@@ -82,7 +111,7 @@ public class BeanValidController {
 
     /**
      *
-     * @param binder 在此控制器内，当方法参数为 money 时执行此方法初始化{@link WebDataBinder}；使用{@link ws.spring.validate.config.CustomWebBindingInitializer#initBinder(WebDataBinder)} 进行初始化方便
+     * @param binder 在此控制器内，当方法参数为 money 时执行此方法初始化{@link WebDataBinder}；使用{@link ws.spring.validate.config.CustomWebBindingInitializer#initBinder(WebDataBinder)} 进行初始化更方便
      */
 //    @InitBinder("money")
     public void initWebDataBinder(WebDataBinder binder) {
