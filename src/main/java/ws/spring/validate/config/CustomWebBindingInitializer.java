@@ -3,12 +3,14 @@ package ws.spring.validate.config;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.validation.SmartValidator;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
 import org.springframework.web.bind.support.WebBindingInitializer;
 
 import javax.annotation.PostConstruct;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -39,6 +41,18 @@ public class CustomWebBindingInitializer extends ConfigurableWebBindingInitializ
 
         Object target = binder.getTarget();
         Class<?> clazz = target == null ? null : target.getClass();
-        validators.stream().filter(validator -> validator.supports(clazz)).forEach(binder::addValidators);
+        validators.stream().filter(validator -> accepte(validator,clazz)).forEach(binder::addValidators);
+//        validators.stream().filter(validator -> validator.supports(clazz)).forEach(binder::addValidators);
+    }
+
+    private boolean accepte(Validator validator,Class<?> clazz) {
+
+        if (Collection.class.isAssignableFrom(clazz) && validator instanceof SmartValidator) {
+
+            return false;
+        }else {
+
+            return validator.supports(clazz);
+        }
     }
 }

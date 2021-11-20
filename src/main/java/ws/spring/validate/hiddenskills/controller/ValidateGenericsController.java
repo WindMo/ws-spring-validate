@@ -55,14 +55,14 @@ public class ValidateGenericsController {
     }
 
     /**
-     * 对比{@link #validateGenericsOfBeanCollectionByValidator(List)}，两者区别很大
+     * 无效，同{@link #validateGenericsOfBeanCollectionByValidator(List)}
+     *
      * @param moneyList
      * @return
-     * @deprecated 抛异常，因为本质是校验集合{@link List}对象，而{@link List}并不是一个标准的java bean
      */
     @PostMapping("/bean-collection-validator2")
     @Deprecated
-    public String validateGenericsOfBeanCollectionByValidator2(@RequestBody @Valid List< Money> moneyList) {
+    public String validateGenericsOfBeanCollectionByValidator2(@RequestBody @Valid List<Money> moneyList) {
 
         log.info("moneyList: {}",moneyList);
         return String.valueOf(moneyList);
