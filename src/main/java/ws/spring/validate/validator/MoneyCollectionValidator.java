@@ -2,6 +2,8 @@ package ws.spring.validate.validator;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import ws.spring.validate.dto.Money;
+
 import java.util.Collection;
 
 /**
@@ -9,7 +11,7 @@ import java.util.Collection;
  * @date 2021-11-20.
  */
 
-//@Component
+@Component
 public class MoneyCollectionValidator extends MoneyValidator {
 
 
@@ -23,7 +25,12 @@ public class MoneyCollectionValidator extends MoneyValidator {
 
         if (target instanceof Collection) {
 
-            ((Collection)target).forEach(t -> super.validate(t,errors));
+            ((Collection)target).forEach(t -> {
+
+                if (t instanceof Money) {
+                    super.validate(t,errors);
+                }
+            });
         } else {
             super.validate(target, errors);
         }

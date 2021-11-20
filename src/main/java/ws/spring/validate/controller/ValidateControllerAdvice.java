@@ -25,7 +25,7 @@ public class ValidateControllerAdvice {
     @ExceptionHandler(value = {
             MethodArgumentNotValidException.class,// @RequestBody 参数映射验证失败抛出此类型异常
             BindException.class,// get、post等参数自动绑定到bean的请求方式时，验证失败抛出此类型异常
-            ConstraintViolationException.class//  @RequestParam 参数映射验证失败抛出此类型异常
+            ConstraintViolationException.class//  @RequestParam 参数映射或校验失败抛出此类型异常
     })
     public Object validatedErrEx(Exception e) {
 
