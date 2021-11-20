@@ -41,18 +41,6 @@ public class CustomWebBindingInitializer extends ConfigurableWebBindingInitializ
 
         Object target = binder.getTarget();
         Class<?> clazz = target == null ? null : target.getClass();
-        validators.stream().filter(validator -> accepte(validator,clazz)).forEach(binder::addValidators);
-//        validators.stream().filter(validator -> validator.supports(clazz)).forEach(binder::addValidators);
-    }
-
-    private boolean accepte(Validator validator,Class<?> clazz) {
-
-        if (Collection.class.isAssignableFrom(clazz) && validator instanceof SmartValidator) {
-
-            return false;
-        }else {
-
-            return validator.supports(clazz);
-        }
+        validators.stream().filter(validator -> validator.supports(clazz)).forEach(binder::addValidators);
     }
 }
