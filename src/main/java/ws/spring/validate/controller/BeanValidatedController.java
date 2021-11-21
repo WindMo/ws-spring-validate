@@ -78,7 +78,7 @@ public class BeanValidatedController {
      * 实际结果会抛异常，因为{@link Email}没有对应的验证集合的校验器
      * @param emailList 此参数加不加{@link Validated}注解都是无效
      * @return
-     * @deprecated 无效
+     * @deprecated 抛异常
      */
     @PostMapping("/method-param-basic-collection")
     @Deprecated
