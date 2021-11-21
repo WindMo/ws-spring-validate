@@ -1,26 +1,25 @@
-package ws.spring.validate.component;
+package ws.spring.validate.bean;
 
-import lombok.Setter;
 import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
 /**
- * 使用{@link Validated} 修饰bean，在IOC创建bean时进行校验
+ * 使用{@link Valid} 修饰bean，在IOC创建bean时进行校验
+ * 不起作用
  * @author WindShadow
  * @version 2021-11-14.
  */
 
-@Validated
+@Valid // 不起作用
 @Component
-@ConfigurationProperties(prefix = "validated.bean")
+@ConfigurationProperties(prefix = "valid.bean")
 @ToString
-public class ValidatedDemoBean {
+public class ValidDemoBean {
 
     @NotBlank
-    @Setter
     private String notblank;
 }
