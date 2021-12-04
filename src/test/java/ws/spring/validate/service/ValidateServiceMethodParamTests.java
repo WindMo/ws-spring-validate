@@ -6,9 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ws.spring.validate.WsSpringValidateApplicationTests;
-import ws.spring.validate.dto.Money;
-import ws.spring.validate.dto.Person;
-import ws.spring.validate.dto.User;
+import ws.spring.validate.pojo.Person;
+import ws.spring.validate.pojo.User;
 
 import javax.validation.ConstraintViolationException;
 import java.util.Collections;

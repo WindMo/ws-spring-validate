@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ws.spring.validate.WsSpringValidateApplicationTests;
-import ws.spring.validate.dto.Car;
+import ws.spring.validate.pojo.Car;
 
 import javax.validation.ConstraintViolationException;
 

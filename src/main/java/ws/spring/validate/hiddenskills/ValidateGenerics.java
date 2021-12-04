@@ -3,8 +3,8 @@ package ws.spring.validate.hiddenskills;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import ws.spring.validate.dto.Box;
-import ws.spring.validate.dto.Person;
+import ws.spring.validate.pojo.Box;
+import ws.spring.validate.pojo.Person;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -114,17 +114,5 @@ public class ValidateGenerics {
     public void validateGenericsOfMapBeanValue(Map<Object,@Valid Person> map) {
 
         log.info("map: {}",map);
-    }
-
-    /**
-     * 校验java类中的泛型，bean类型
-     *
-     * @param box
-     * @deprecated 无法校验java类中的泛型
-     */
-    @Deprecated
-    public void validateGenericsOfJavaBean(Box<@NotBlank String> box) {
-
-        log.info("box: {}",box);
     }
 }

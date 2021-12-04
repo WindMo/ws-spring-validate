@@ -1,22 +1,23 @@
-package ws.spring.validate.dto;
+package ws.spring.validate.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import ws.spring.validate.annotation.Color;
+
+import javax.validation.constraints.Email;
 
 /**
  * @author WindShadow
- * @version 2021-11-14.
+ * @version 2021-11-16.
  */
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Car {
+public class User {
 
-    @Color
-    private String color;
+    @Email
+    private String email;
 }

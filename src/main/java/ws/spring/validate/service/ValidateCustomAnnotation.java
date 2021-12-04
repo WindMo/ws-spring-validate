@@ -3,7 +3,7 @@ package ws.spring.validate.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import ws.spring.validate.dto.Car;
+import ws.spring.validate.pojo.Car;
 
 import javax.validation.Valid;
 

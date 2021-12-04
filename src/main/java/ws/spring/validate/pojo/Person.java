@@ -1,4 +1,4 @@
-package ws.spring.validate.dto;
+package ws.spring.validate.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,14 +9,14 @@ import javax.validation.constraints.Email;
 
 /**
  * @author WindShadow
- * @version 2021-11-16.
+ * @version 2021-11-14.
  */
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class User {
+public class Person {
 
     @Email
     private String email;

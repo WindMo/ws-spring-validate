@@ -5,9 +5,9 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import ws.spring.validate.dto.Money;
-import ws.spring.validate.dto.People;
-import ws.spring.validate.dto.Person;
+import ws.spring.validate.pojo.Money;
+import ws.spring.validate.pojo.People;
+import ws.spring.validate.pojo.Person;
 import ws.spring.validate.validator.MoneyValidator;
 
 import javax.validation.constraints.Email;

@@ -1,4 +1,4 @@
-package ws.spring.validate.dto;
+package ws.spring.validate.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

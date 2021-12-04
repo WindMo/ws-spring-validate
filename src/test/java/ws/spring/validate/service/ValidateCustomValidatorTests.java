@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ws.spring.validate.WsSpringValidateApplicationTests;
-import ws.spring.validate.dto.Money;
+import ws.spring.validate.pojo.Money;
 
 /**
  * 自定义校验器{@link org.springframework.validation.Validator}测试

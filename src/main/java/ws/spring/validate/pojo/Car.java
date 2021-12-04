@@ -1,11 +1,10 @@
-package ws.spring.validate.dto;
+package ws.spring.validate.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
-import javax.validation.constraints.Min;
+import ws.spring.validate.annotation.Color;
 
 /**
  * @author WindShadow
@@ -14,9 +13,10 @@ import javax.validation.constraints.Min;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor()
+@AllArgsConstructor
 @ToString
-public class Money {
+public class Car {
 
-    private String size;
+    @Color
+    private String color;
 }

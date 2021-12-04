@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ws.spring.validate.WsSpringValidateApplicationTests;
-import ws.spring.validate.dto.Box;
-import ws.spring.validate.dto.Person;
+import ws.spring.validate.pojo.Box;
+import ws.spring.validate.pojo.Person;
 
 import javax.validation.ConstraintDeclarationException;
 import javax.validation.ConstraintViolationException;
@@ -26,6 +26,9 @@ public class ValidateGenericsTests extends WsSpringValidateApplicationTests {
 
     @Autowired
     public ValidateGenerics serviceBean;
+
+    @Autowired
+    public CustomValidateGenerics customValidateGenericsBean;
 
     @Test
     public void validateGenericsOfIntegerCollection() {
@@ -134,11 +137,10 @@ public class ValidateGenericsTests extends WsSpringValidateApplicationTests {
      *
      */
     @Test
-    @SneakyThrows(ConstraintDeclarationException.class)
     public void validateGenericsOfJavaBean() {
 
         Box<String> box = new Box<>("  ");
-        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.validateGenericsOfJavaBean(box));
-        log.info("ConstraintViolationException: {}",e.getMessage());
+        ConstraintDeclarationException e = Assertions.assertThrows(ConstraintDeclarationException.class, () -> customValidateGenericsBean.validateGenericsOfJavaBean(box));
+        log.info("ConstraintDeclarationException: {}",e.getMessage());
     }
 }

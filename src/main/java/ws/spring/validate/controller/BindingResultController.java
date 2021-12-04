@@ -6,8 +6,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ws.spring.validate.dto.EmailWrapper;
-import ws.spring.validate.dto.Person;
+import ws.spring.validate.pojo.EmailWrapper;
+import ws.spring.validate.pojo.Person;
 import ws.spring.validate.util.ValidateUtils;
 
 /**

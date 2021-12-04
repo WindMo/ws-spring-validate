@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.SmartValidator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-import ws.spring.validate.dto.Person;
+import ws.spring.validate.pojo.Person;
 import ws.spring.validate.util.JacksonUtils;
 import ws.spring.validate.util.ValidateUtils;
 

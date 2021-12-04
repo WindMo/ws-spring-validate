@@ -3,7 +3,7 @@ package ws.spring.validate.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ws.spring.validate.dto.Computer;
+import ws.spring.validate.pojo.Computer;
 import ws.spring.validate.group.Group;
 
 /**

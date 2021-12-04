@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
-import ws.spring.validate.dto.Money;
+import ws.spring.validate.pojo.Money;
 
 /**
  * 自定义校验器

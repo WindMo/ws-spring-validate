@@ -3,8 +3,8 @@ package ws.spring.validate.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import ws.spring.validate.dto.Person;
-import ws.spring.validate.dto.User;
+import ws.spring.validate.pojo.Person;
+import ws.spring.validate.pojo.User;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;

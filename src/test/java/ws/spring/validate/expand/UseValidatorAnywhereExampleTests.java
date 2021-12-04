@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ws.spring.validate.WsSpringValidateApplicationTests;
-import ws.spring.validate.dto.Person;
+import ws.spring.validate.pojo.Person;
 import ws.spring.validate.util.JacksonUtils;
 
 /**
