@@ -68,4 +68,19 @@ public class ValidateServiceMethodParamTests extends WsSpringValidateApplication
 
         Assertions.assertDoesNotThrow(() -> serviceBean.validateCollectionByValidatedAnnotation(Collections.singletonList(user)));
     }
+
+    @Test
+    public void callThisMethod() {
+
+        Assertions.assertDoesNotThrow(() -> serviceBean.callThisMethod(person));
+    }
+
+    @Test
+    public void callInjectSelfMethod() {
+
+        // 手动调用set方法设置属性
+        serviceBean.setServiceMethodParam(serviceBean);
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.callInjectSelfMethod(person));
+        log.info("ConstraintViolationException: {}",e.getMessage());
+    }
 }

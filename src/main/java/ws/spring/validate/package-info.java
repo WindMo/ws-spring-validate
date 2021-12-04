@@ -7,6 +7,7 @@
 package ws.spring.validate;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -18,6 +19,7 @@ import ws.spring.validate.bean.ValidDemoBean;
 import ws.spring.validate.bean.ValidatedDemoBean;
 import ws.spring.validate.controller.BasicTypeValidatedController;
 import ws.spring.validate.controller.BeanValidatedController;
+import ws.spring.validate.service.ValidateServiceMethodParam;
 import ws.spring.validate.util.ValidateUtils;
 
 /**
@@ -36,6 +38,8 @@ class ValidateHelper implements ApplicationContextAware, ApplicationRunner {
 
         printBean(ValidDemoBean.class);  // Spring创建bean时对其属性值不进行校验
         printBean(ValidatedDemoBean.class); // Spring创建bean时对其属性值进行校验，对其进行了代理
+
+        printBean(ValidateServiceMethodParam.class); // 使用了Validated注解，对其进行了代理
 
         printBean(BeanValidatedController.class); // Controller 本身支持方法上校验bean，对其不代理
         printBean(BasicTypeValidatedController.class); // Controller 上使用了Validated注解，对其进行了代理
@@ -60,7 +64,7 @@ class ValidateHelper implements ApplicationContextAware, ApplicationRunner {
 
         Object bean = this.applicationContext.getBean(clazz);
         // 打印bean 预期Class、真实Class、bean.toString 的内容
-        log.info("Bean - Class: {} RelClass: {} ToString: {}",clazz.getTypeName(),bean.getClass().getTypeName(),bean);
+        log.info("Bean - IsAop: {} Class: {} RelClass: {} ToString: {}", AopUtils.isAopProxy(bean), clazz.getTypeName(),bean.getClass().getTypeName(),bean);
     }
 
 }

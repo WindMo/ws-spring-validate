@@ -1,5 +1,6 @@
 package ws.spring.validate.service;
 
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -65,5 +66,29 @@ public class ValidateServiceMethodParam {
     @Deprecated
     public void validateCollectionByValidatedAnnotation(@Validated List<User> userList) {
         log.info("userList: {}",userList);
+    }
+
+    /**
+     * 自身this调用，并不会触发校验，与Spring事务类似
+     * @param person
+     * @deprecated 不触发校验
+     */
+    @Deprecated
+    public void callThisMethod(Person person) {
+
+        this.validateBeanByValidAnnotation(person);
+    }
+
+//    @Autowired // 不能通过依赖注入自己！！！目前未了解
+    @Setter
+    private ValidateServiceMethodParam serviceMethodParam;
+
+    /**
+     * 手动调用{@link #setServiceMethodParam(ValidateServiceMethodParam)}方法设置“自己”（被代理过）后，调用会触发校验
+     * @param person
+     */
+    public void callInjectSelfMethod(Person person) {
+
+        serviceMethodParam.validateBeanByValidAnnotation(person);
     }
 }
