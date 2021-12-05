@@ -32,7 +32,8 @@ public class CustomWebBindingInitializer extends ConfigurableWebBindingInitializ
     }
 
     /**
-     * 通过遍历注入{@link #validators}的集合，如果支持当前绑定对象的类型，则加入绑定器
+     * 通过遍历注入{@link #validators}的集合，如果支持当前绑定对象的类型，则加入绑定器，
+     * 如果添加了不支持的校验器，则在校验时将抛出状态异常
      * @param binder
      */
     @Override

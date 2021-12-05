@@ -17,7 +17,7 @@ import javax.validation.ValidatorFactory;
 import java.util.Set;
 
 /**
- * 在任何地方使用Spring的校验功能完成业务校验
+ * 在任何地方使用Spring的约束校验功能完成业务校验
  * @author WindShadow
  * @date 2021-11-18.
  */
