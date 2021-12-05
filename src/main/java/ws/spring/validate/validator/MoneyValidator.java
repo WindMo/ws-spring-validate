@@ -23,7 +23,7 @@ public class MoneyValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return Money.class.equals(clazz);
+        return Money.class.isAssignableFrom(clazz);
     }
 
     /**
