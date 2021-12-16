@@ -1,8 +1,8 @@
 package ws.spring.validate.support;
 
-import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * @author WindShadow
@@ -10,40 +10,32 @@ import java.util.EnumSet;
  */
 
 @SuppressWarnings({"rawtypes"})
-public class EnumRangeRangeConstraintValidator implements ConstraintValidator<EnumRange,Object> {
+public class EnumRangeRangeConstraintValidator extends AbstractElementRangeConstraintValidator<EnumRange,Object> {
 
     private String message;
-    private EnumSet elementSet;
 
     @SuppressWarnings({"unchecked"})
     @Override
-    public void initialize(EnumRange enumRange) {
+    protected Set<Object> getElements(EnumRange enumRange) {
 
         Class<? extends Enum> type = enumRange.type();
         this.message = enumRange.message();
         String[] elements = enumRange.elements();
-        if (elements.length == 0) {
-            throw new IllegalStateException("The elements in the <"+ EnumRange.class.getName() + "> annotation must contain at least one element");
-        }
-        elementSet = EnumSet.noneOf(type);
+        EnumSet enumSet = EnumSet.noneOf(type);
         for (String element : elements) {
 
             Enum e = Enum.valueOf(type,element);
-            elementSet.add(e);
+            enumSet.add(e);
         }
+        return enumSet;
     }
 
     @Override
-    public boolean isValid(Object value, ConstraintValidatorContext context) {
+    protected void invalid(Object value, ConstraintValidatorContext context) {
 
-        if (!elementSet.contains(value)) {
-
-            // 禁用默认的消息模板
-            context.disableDefaultConstraintViolation();
-            // 设置自己的消息模板
-            context.buildConstraintViolationWithTemplate(message).addConstraintViolation();
-            return false;
-        }
-        return true;
+        // 禁用默认的消息模板
+        context.disableDefaultConstraintViolation();
+        // 设置自己的消息模板
+        context.buildConstraintViolationWithTemplate(message).addConstraintViolation();
     }
 }

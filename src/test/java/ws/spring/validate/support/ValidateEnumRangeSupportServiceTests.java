@@ -17,10 +17,10 @@ import java.lang.annotation.ElementType;
  */
 
 @Slf4j
-public class ValidateSupportServiceTests extends WsSpringValidateApplicationTests {
+public class ValidateEnumRangeSupportServiceTests extends WsSpringValidateApplicationTests {
 
     @Autowired
-    private ValidateSupportService validateSupportService;
+    private ValidateEnumRangeSupportService validateSupportService;
 
     @Test
     public void validateEnumRange() {
@@ -43,9 +43,9 @@ public class ValidateSupportServiceTests extends WsSpringValidateApplicationTest
     }
 
     @Test
-    public void validateEnumRangeErrorWithoutEnum() {
+    public void validateEnumRangeErrorWithoutRange() {
 
-        ValidationException e = Assertions.assertThrows(ValidationException.class, () -> validateSupportService.validateEnumRangeErrorWithoutEnum(Direction.LEFT));
+        ValidationException e = Assertions.assertThrows(ValidationException.class, () -> validateSupportService.validateEnumRangeErrorWithoutRange(Direction.LEFT));
         log.info("ValidationException: {}",e.getMessage());
     }
 }

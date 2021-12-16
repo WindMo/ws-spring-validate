@@ -15,14 +15,14 @@ import java.lang.annotation.ElementType;
 @Slf4j
 @Validated
 @Service
-public class ValidateSupportService {
+public class ValidateEnumRangeSupportService {
 
     public void validateEnumRange(@EnumRange(type = Direction.class, elements = {"UP","DOWN"}) Direction direction) {
 
         log.info("direction: {}",direction);
     }
 
-    public void validateEnumRangeErrorWithoutEnum(@EnumRange(type = Direction.class, elements = {}) Direction direction) {
+    public void validateEnumRangeErrorWithoutRange(@EnumRange(type = Direction.class, elements = {}) Direction direction) {
 
         log.info("direction: {}",direction);
     }
@@ -36,4 +36,6 @@ public class ValidateSupportService {
 
         log.info("elementType: {}",elementType);
     }
+
+
 }

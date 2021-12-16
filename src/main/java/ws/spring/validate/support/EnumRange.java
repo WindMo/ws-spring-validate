@@ -16,7 +16,7 @@ import static java.lang.annotation.ElementType.*;
 
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
+@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Constraint(validatedBy = {EnumRangeRangeConstraintValidator.class})
 public @interface EnumRange {
 
