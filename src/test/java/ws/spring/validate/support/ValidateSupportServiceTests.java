@@ -31,8 +31,8 @@ public class ValidateSupportServiceTests extends WsSpringValidateApplicationTest
         log.info("ConstraintViolationException: {}",e1.getMessage());
         ConstraintViolationException e2 = Assertions.assertThrows(ConstraintViolationException.class, () -> validateSupportService.validateEnumRange(Direction.RIGHT));
         log.info("ConstraintViolationException: {}",e2.getMessage());
-        ConstraintViolationException e3 = Assertions.assertThrows(ConstraintViolationException.class, () -> validateSupportService.validateEnumRangeErrorEnumType(ElementType.METHOD));
-        log.info("ConstraintViolationException: {}",e3.getMessage());
+        ValidationException e3 = Assertions.assertThrows(ValidationException.class, () -> validateSupportService.validateEnumRangeErrorEnumType(ElementType.METHOD));
+        log.info("ValidationException: {}",e3.getMessage());
     }
 
     @Test
