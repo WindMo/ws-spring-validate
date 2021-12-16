@@ -9,6 +9,7 @@ import ws.spring.validate.enums.Direction;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
+import java.lang.annotation.ElementType;
 
 /**
  * @author WindShadow
@@ -30,6 +31,8 @@ public class ValidateSupportServiceTests extends WsSpringValidateApplicationTest
         log.info("ConstraintViolationException: {}",e1.getMessage());
         ConstraintViolationException e2 = Assertions.assertThrows(ConstraintViolationException.class, () -> validateSupportService.validateEnumRange(Direction.RIGHT));
         log.info("ConstraintViolationException: {}",e2.getMessage());
+        ConstraintViolationException e3 = Assertions.assertThrows(ConstraintViolationException.class, () -> validateSupportService.validateEnumRangeErrorEnumType(ElementType.METHOD));
+        log.info("ConstraintViolationException: {}",e3.getMessage());
     }
 
     @Test

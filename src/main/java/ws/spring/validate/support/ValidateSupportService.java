@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import ws.spring.validate.enums.Direction;
 
+import java.lang.annotation.ElementType;
+
 /**
  * @author WindShadow
  * @version 2021-12-16.
@@ -28,5 +30,10 @@ public class ValidateSupportService {
     public void validateEnumRangeErrorEnumName(@EnumRange(type = Direction.class, elements = {"abc"}) Direction direction) {
 
         log.info("direction: {}",direction);
+    }
+
+    public void validateEnumRangeErrorEnumType(@EnumRange(type = Direction.class, elements = {"DOWN"}) ElementType elementType) {
+
+        log.info("elementType: {}",elementType);
     }
 }

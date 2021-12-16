@@ -13,14 +13,13 @@ import java.util.EnumSet;
 public class EnumRangeRangeConstraintValidator implements ConstraintValidator<EnumRange,Object> {
 
     private String message;
-    private Class<? extends Enum> type;
     private EnumSet elementSet;
 
     @SuppressWarnings({"unchecked"})
     @Override
     public void initialize(EnumRange enumRange) {
 
-        this.type = enumRange.type();
+        Class<? extends Enum> type = enumRange.type();
         this.message = enumRange.message();
         String[] elements = enumRange.elements();
         if (elements.length == 0) {
