@@ -15,6 +15,7 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.ElementType.TYPE_USE;
 
 /**
+ * 校验字母的注解
  * @author WindShadow
  * @version 2021-12-17.
  */
@@ -26,7 +27,7 @@ import static java.lang.annotation.ElementType.TYPE_USE;
 @Size
 @Pattern(regexp = "[a-zA-Z]*")
 //@ReportAsSingleViolation
-public @interface NormalText {
+public @interface LetterText {
 
     /** 覆盖{@link Size#min()} */
     @OverridesAttribute(constraint = Size.class, name = "min") int min() default 0;

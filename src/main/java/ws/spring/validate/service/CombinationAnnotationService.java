@@ -3,7 +3,7 @@ package ws.spring.validate.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import ws.spring.validate.annotation.NormalText;
+import ws.spring.validate.annotation.LetterText;
 
 /**
  * 组合注解使用示例
@@ -16,11 +16,11 @@ import ws.spring.validate.annotation.NormalText;
 @Service
 public class CombinationAnnotationService {
 
-    public void validateNormalText(@NormalText String text) {
+    public void validateNormalText(@LetterText String text) {
         log.info("text: {}",text);
     }
 
-    public void validateNormalTextCustomOption(@NormalText(min = 2) String text) {
+    public void validateNormalTextCustomOption(@LetterText(min = 2) String text) {
         log.info("text: {}",text);
     }
 }
