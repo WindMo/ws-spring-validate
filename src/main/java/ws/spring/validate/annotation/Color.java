@@ -28,7 +28,7 @@ public @interface Color {
     String GREEN = "green";
 
     /** 消息，一般在此预置国际化所需的code */
-    String message() default "";// 简化代码直接空字符
+    String message() default "{ws.spring.validate.annotation.Color.message}";
 
     /** 依据class分组，该属性必须有 */
     Class<?>[] groups() default {};

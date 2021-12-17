@@ -5,10 +5,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import ws.spring.validate.WsSpringValidateApplicationTests;
 import ws.spring.validate.pojo.Car;
 
 import javax.validation.ConstraintViolationException;
+import java.util.Locale;
 
 /**
  * @author WindShadow
@@ -32,6 +34,7 @@ public class ValidateCustomAnnotationTests extends WsSpringValidateApplicationTe
     @Test
     public void validateColorOfCar() {
 
+        LocaleContextHolder.setLocale(Locale.CHINA);
         ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.validateColorOfCar(car));
         log.info("ConstraintViolationException: {}",e.getMessage());
     }
