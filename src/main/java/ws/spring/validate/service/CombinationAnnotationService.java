@@ -16,11 +16,11 @@ import ws.spring.validate.annotation.LetterText;
 @Service
 public class CombinationAnnotationService {
 
-    public void validateNormalText(@LetterText String text) {
+    public void validateLetterText(@LetterText String text) {
         log.info("text: {}",text);
     }
 
-    public void validateNormalTextCustomOption(@LetterText(min = 2) String text) {
+    public void validateLetterTextCustomOption(@LetterText(min = 2) String text) {
         log.info("text: {}",text);
     }
 }

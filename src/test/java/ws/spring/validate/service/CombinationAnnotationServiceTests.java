@@ -20,35 +20,35 @@ public class CombinationAnnotationServiceTests extends WsSpringValidateApplicati
     private CombinationAnnotationService combinationAnnotationService;
 
     @Test
-    public void validateNormalText() {
+    public void validateLetterText() {
 
-        Assertions.assertDoesNotThrow(() -> combinationAnnotationService.validateNormalText("abc"));
-        Assertions.assertDoesNotThrow(() -> combinationAnnotationService.validateNormalText(""));
-        ConstraintViolationException e1 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateNormalText(" "));
+        Assertions.assertDoesNotThrow(() -> combinationAnnotationService.validateLetterText("abc"));
+        Assertions.assertDoesNotThrow(() -> combinationAnnotationService.validateLetterText(""));
+        ConstraintViolationException e1 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateLetterText(" "));
         log.info("ConstraintViolationException: {}",e1.getMessage());
-        ConstraintViolationException e2 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateNormalText("123"));
+        ConstraintViolationException e2 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateLetterText("123"));
         log.info("ConstraintViolationException: {}",e2.getMessage());
-        ConstraintViolationException e3 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateNormalText("abcdef"));
+        ConstraintViolationException e3 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateLetterText("abcdef"));
         log.info("ConstraintViolationException: {}",e3.getMessage());
-        ConstraintViolationException e4 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateNormalText("123456"));
+        ConstraintViolationException e4 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateLetterText("123456"));
         log.info("ConstraintViolationException: {}",e4.getMessage());
     }
 
     @Test
-    public void validateNormalTextCustomOption() {
+    public void validateLetterTextCustomOption() {
 
-        Assertions.assertDoesNotThrow(() -> combinationAnnotationService.validateNormalTextCustomOption("abc"));
-        ConstraintViolationException e0 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateNormalTextCustomOption("a"));
+        Assertions.assertDoesNotThrow(() -> combinationAnnotationService.validateLetterTextCustomOption("abc"));
+        ConstraintViolationException e0 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateLetterTextCustomOption("a"));
         log.info("ConstraintViolationException: {}",e0.getMessage());
-        ConstraintViolationException e00 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateNormalTextCustomOption(""));
+        ConstraintViolationException e00 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateLetterTextCustomOption(""));
         log.info("ConstraintViolationException: {}",e00.getMessage());
-        ConstraintViolationException e1 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateNormalTextCustomOption(" "));
+        ConstraintViolationException e1 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateLetterTextCustomOption(" "));
         log.info("ConstraintViolationException: {}",e1.getMessage());
-        ConstraintViolationException e2 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateNormalTextCustomOption("123"));
+        ConstraintViolationException e2 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateLetterTextCustomOption("123"));
         log.info("ConstraintViolationException: {}",e2.getMessage());
-        ConstraintViolationException e3 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateNormalTextCustomOption("abcdef"));
+        ConstraintViolationException e3 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateLetterTextCustomOption("abcdef"));
         log.info("ConstraintViolationException: {}",e3.getMessage());
-        ConstraintViolationException e4 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateNormalTextCustomOption("123456"));
+        ConstraintViolationException e4 = Assertions.assertThrows(ConstraintViolationException.class, () -> combinationAnnotationService.validateLetterTextCustomOption("123456"));
         log.info("ConstraintViolationException: {}",e4.getMessage());
     }
 }
