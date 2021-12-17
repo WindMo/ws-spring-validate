@@ -33,6 +33,10 @@ public @interface NormalText {
     /** 覆盖{@link Size#max()} */
     @OverridesAttribute(constraint = Size.class, name = "max") int max() default 5;
 
+    /**
+     * 使用{@link ReportAsSingleViolation}注解时，表示忽略组合注解的校验结果message消息，使用自身{@link #message()}消息作为最终的校验消息
+     * @return message
+     */
     String message() default "{ws.spring.validate.annotation.NormalText.message}";
     Class<?>[] groups() default { };
     Class<? extends Payload>[] payload() default { };
