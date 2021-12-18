@@ -24,7 +24,7 @@ import static java.lang.annotation.ElementType.*;
  *     }
  * }
  * </pre>
- * 当枚举参数<code>param</>不为"JIN","MU","SHUI"之一时，则校验不通过，反之通过
+ * 当枚举参数<code>param</code>不为"JIN","MU","SHUI"之一时，则校验不通过，反之通过
  * <p>当{@link EnumRange}修饰的参数类型和{@link EnumRange#enumType()}不一致时，将在校验时抛出异常，开发者需要注意
  * @author WindShadow
  * @version 2021-12-16.

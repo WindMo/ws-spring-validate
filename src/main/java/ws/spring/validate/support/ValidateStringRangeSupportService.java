@@ -13,7 +13,7 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 @Service
 public class ValidateStringRangeSupportService {
-
+    
     public void validateStringRange(@StringRange({"aaa","bbb"}) String str) {
 
         log.info("str: {}",str);
