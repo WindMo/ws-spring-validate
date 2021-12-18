@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 
 /**
- * 限制枚举范围的约束注解，使用方式如下：
+ * 限制枚举范围的约束注解，使用方式如下（以Spring环境示例）：
  * <pre class="code">
  * public enum MyEnum {
  *     // 金木水火土
