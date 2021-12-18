@@ -17,22 +17,22 @@ import java.lang.annotation.ElementType;
 @Service
 public class ValidateEnumRangeSupportService {
 
-    public void validateEnumRange(@EnumRange(type = Direction.class, elements = {"UP","DOWN"}) Direction direction) {
+    public void validateEnumRange(@EnumRange(enumType = Direction.class, enums = {"UP","DOWN"}) Direction direction) {
 
         log.info("direction: {}",direction);
     }
 
-    public void validateEnumRangeErrorWithoutRange(@EnumRange(type = Direction.class, elements = {}) Direction direction) {
+    public void validateEnumRangeErrorWithoutRange(@EnumRange(enumType = Direction.class, enums = {}) Direction direction) {
 
         log.info("direction: {}",direction);
     }
 
-    public void validateEnumRangeErrorEnumName(@EnumRange(type = Direction.class, elements = {"abc"}) Direction direction) {
+    public void validateEnumRangeErrorEnumName(@EnumRange(enumType = Direction.class, enums = {"abc"}) Direction direction) {
 
         log.info("direction: {}",direction);
     }
 
-    public void validateEnumRangeErrorEnumType(@EnumRange(type = Direction.class, elements = {"DOWN"}) ElementType elementType) {
+    public void validateEnumRangeErrorEnumType(@EnumRange(enumType = Direction.class, enums = {"DOWN"}) ElementType elementType) {
 
         log.info("elementType: {}",elementType);
     }

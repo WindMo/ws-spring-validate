@@ -6,6 +6,7 @@ import java.lang.annotation.Annotation;
 import java.util.Set;
 
 /**
+ * 元素范围约束检验器抽象实现
  * @author WindShadow
  * @version 2021-12-16.
  */
@@ -35,16 +36,16 @@ public abstract class AbstractElementRangeConstraintValidator<A extends Annotati
     }
 
     /**
-     * 从注解中获取元素Set
-     * @param constraintAnnotation
+     * 从注解中获取元素的Set集合
+     * @param constraintAnnotation constraintAnnotation
      * @return {@link Set#isEmpty()}必须为false
      */
     protected abstract Set<T> getElements(A constraintAnnotation);
 
     /**
      * 校验不通过时调用
-     * @param value
-     * @param context
+     * @param value value
+     * @param context ConstraintValidatorContext
      */
     protected void invalid(T value, ConstraintValidatorContext context) {
 
