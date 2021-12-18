@@ -10,8 +10,25 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 
 /**
+ * 限制枚举范围的约束注解，使用方式如下：
+ * <pre class="code">
+ * public enum MyEnum {
+ *     // 金木水火土
+ *     JIN,MU,SHUI,HUO,TU
+ * }
+ * &#064;Validated
+ * &#064;Service
+ * public class CustomService {
+ *     public void aMethod(EnumRange(enumType = MyEnum.class, enums = {"JIN","MU","SHUI"}) MyEnum param)
+ *          // ...
+ *     }
+ * }
+ * </pre>
+ * 当枚举参数<code>param</>不为"JIN","MU","SHUI"之一时，则校验不通过，反之通过
+ * <p>当{@link EnumRange}修饰的参数类型和{@link EnumRange#enumType()}不一致时，将在校验时抛出异常，开发者需要注意
  * @author WindShadow
  * @version 2021-12-16.
+ * @see EnumRangeRangeConstraintValidator
  */
 
 @Documented
@@ -25,7 +42,7 @@ public @interface EnumRange {
 
     /**
      * 枚举名称数组，其中的字符串必须是可以通过{@link Enum#valueOf(Class, String)}方法可以得到枚举实例的枚举名称
-     * @return enums
+     * @return enums 至少必须配置一个元素
      */
     String[] enums();
 

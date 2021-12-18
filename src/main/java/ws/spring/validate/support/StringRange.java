@@ -11,6 +11,7 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.ElementType.TYPE_USE;
 
 /**
+ * 字符串元素范围约束注解
  * @author WindShadow
  * @version 2021-12-16.
  */
@@ -21,6 +22,10 @@ import static java.lang.annotation.ElementType.TYPE_USE;
 @Constraint(validatedBy = {StringRangeConstraintValidator.class})
 public @interface StringRange {
 
+    /**
+     * 字符串元素范围
+     * @return value 至少必须配置一个元素
+     */
     String[] value();
 
     /** 消息，一般在此预置国际化所需的code */
