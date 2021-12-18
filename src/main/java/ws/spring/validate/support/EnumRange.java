@@ -19,7 +19,7 @@ import static java.lang.annotation.ElementType.*;
  * &#064;Validated
  * &#064;Service
  * public class CustomService {
- *     public void aMethod(EnumRange(enumType = MyEnum.class, enums = {"JIN","MU","SHUI"}) MyEnum param)
+ *     public void aMethod(&#064;EnumRange(enumType = MyEnum.class, enums = {"JIN","MU","SHUI"}) MyEnum param)
  *          // ...
  *     }
  * }

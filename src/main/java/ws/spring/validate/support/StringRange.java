@@ -11,7 +11,17 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.ElementType.TYPE_USE;
 
 /**
- * 字符串元素范围约束注解
+ * 字符串元素范围约束注解，使用方式如下：
+ * <pre class="code">
+ * &#064;Validated
+ * &#064;Service
+ * public class CustomService {
+ *     public void aMethod(&#064;StringRange({"aaa","bbb"}) String str)
+ *          // ...
+ *     }
+ * }
+ * </pre>
+ * 当参数<code>str</code>不为"aaa","bbb"之一时，则校验不通过，反之通过
  * @author WindShadow
  * @version 2021-12-16.
  */
