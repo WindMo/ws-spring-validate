@@ -26,7 +26,7 @@ import static java.lang.annotation.ElementType.TYPE_USE;
 @Constraint(validatedBy = {})
 @Size
 @Pattern(regexp = "[a-zA-Z]*")
-//@ReportAsSingleViolation
+@ReportAsSingleViolation
 public @interface LetterText {
 
     /** 覆盖{@link Size#min()} */
@@ -35,7 +35,7 @@ public @interface LetterText {
     @OverridesAttribute(constraint = Size.class, name = "max") int max() default 5;
 
     /**
-     * 使用{@link ReportAsSingleViolation}注解时，表示忽略组合注解的校验结果message消息，使用自身{@link #message()}消息作为最终的校验消息
+     * 使用{@link ReportAsSingleViolation}注解时，表示忽略组合注解的校验结果message消息，使用自身<code>message</code>消息作为最终的校验消息
      * @return message
      */
     String message() default "{ws.spring.validate.annotation.NormalText.message}";
