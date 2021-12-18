@@ -24,7 +24,7 @@ public @interface StringRange {
     String[] value();
 
     /** 消息，一般在此预置国际化所需的code */
-    String message() default "";// 简化代码直接空字符
+    String message() default "{ws.spring.validate.support.StringRange.message}";
 
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

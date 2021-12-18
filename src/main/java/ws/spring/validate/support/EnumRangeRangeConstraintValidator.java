@@ -10,16 +10,22 @@ import java.util.Set;
  */
 
 @SuppressWarnings({"rawtypes"})
-public class EnumRangeRangeConstraintValidator extends AbstractElementRangeConstraintValidator<EnumRange,Object> {
+public class EnumRangeRangeConstraintValidator extends AbstractElementRangeConstraintValidator<EnumRange,Enum> {
 
-    private String message;
+    private Class<? extends Enum> type;
+
+    @Override
+    public boolean isValid(Enum value, ConstraintValidatorContext context) {
+
+        checkType(value);
+        return super.isValid(value, context);
+    }
 
     @SuppressWarnings({"unchecked"})
     @Override
-    protected Set<Object> getElements(EnumRange enumRange) {
+    protected Set<Enum> getElements(EnumRange enumRange) {
 
-        Class<? extends Enum> type = enumRange.type();
-        this.message = enumRange.message();
+        this.type = enumRange.type();
         String[] elements = enumRange.elements();
         EnumSet enumSet = EnumSet.noneOf(type);
         for (String element : elements) {
@@ -30,12 +36,11 @@ public class EnumRangeRangeConstraintValidator extends AbstractElementRangeConst
         return enumSet;
     }
 
-    @Override
-    protected void invalid(Object value, ConstraintValidatorContext context) {
+    private void checkType(Enum value) {
 
-        // 禁用默认的消息模板
-        context.disableDefaultConstraintViolation();
-        // 设置自己的消息模板
-        context.buildConstraintViolationWithTemplate(message).addConstraintViolation();
+        if (!type.isInstance(value)) {
+
+            throw new IllegalStateException("This enumeration type <" + value.getClass().getName() + "> does not match the expected enumeration type <" + type.getName() + ">");
+        }
     }
 }

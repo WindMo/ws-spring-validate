@@ -46,5 +46,7 @@ public abstract class AbstractElementRangeConstraintValidator<A extends Annotati
      * @param value
      * @param context
      */
-    protected abstract void invalid(T value, ConstraintValidatorContext context);
+    protected void invalid(T value, ConstraintValidatorContext context) {
+
+    }
 }

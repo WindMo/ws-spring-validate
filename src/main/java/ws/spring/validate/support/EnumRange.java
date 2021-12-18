@@ -24,8 +24,7 @@ public @interface EnumRange {
 
     String[] elements();
 
-    /** 消息，一般在此预置国际化所需的code */
-    String message() default "";// 简化代码直接空字符
+    String message() default "{ws.spring.validate.support.EnumRange.message}";
 
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

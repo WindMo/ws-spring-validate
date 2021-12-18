@@ -4,10 +4,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import ws.spring.validate.WsSpringValidateApplicationTests;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
+import java.util.Locale;
 
 /**
  * @author WindShadow
@@ -22,6 +24,8 @@ public class ValidateStringRangeSupportServiceTests extends WsSpringValidateAppl
 
     @Test
     public void validateStringRange() {
+
+        LocaleContextHolder.setLocale(Locale.CHINA);
 
         Assertions.assertDoesNotThrow(() -> stringRangeSupportService.validateStringRange("aaa"));
         Assertions.assertDoesNotThrow(() -> stringRangeSupportService.validateStringRange("bbb"));

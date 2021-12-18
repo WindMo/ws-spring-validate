@@ -4,12 +4,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import ws.spring.validate.WsSpringValidateApplicationTests;
 import ws.spring.validate.enums.Direction;
 
 import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
 import java.lang.annotation.ElementType;
+import java.util.Locale;
 
 /**
  * @author WindShadow
@@ -24,7 +26,7 @@ public class ValidateEnumRangeSupportServiceTests extends WsSpringValidateApplic
 
     @Test
     public void validateEnumRange() {
-
+        LocaleContextHolder.setLocale(Locale.US);
         Assertions.assertDoesNotThrow(() -> validateSupportService.validateEnumRange(Direction.UP));
         Assertions.assertDoesNotThrow(() -> validateSupportService.validateEnumRange(Direction.DOWN));
         ConstraintViolationException e1 = Assertions.assertThrows(ConstraintViolationException.class, () -> validateSupportService.validateEnumRange(Direction.LEFT));
