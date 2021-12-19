@@ -39,7 +39,7 @@ public @interface StringRange {
     String[] value();
 
     /** 消息，一般在此预置国际化所需的code */
-    String message() default "{ws.spring.validate.support.StringRange.message}";
+    String message() default "{ws.spring.validate.extend.StringRange.message}";
 
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

@@ -46,7 +46,7 @@ public @interface EnumRange {
      */
     String[] enums();
 
-    String message() default "{ws.spring.validate.support.EnumRange.message}";
+    String message() default "{ws.spring.validate.extend.EnumRange.message}";
 
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
