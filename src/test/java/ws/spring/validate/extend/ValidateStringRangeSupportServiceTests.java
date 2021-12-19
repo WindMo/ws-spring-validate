@@ -1,4 +1,4 @@
-package ws.spring.validate.support;
+package ws.spring.validate.extend;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;

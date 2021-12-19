@@ -1,4 +1,4 @@
-package ws.spring.validate.support;
+package ws.spring.validate.extend;
 
 import javax.validation.ConstraintValidatorContext;
 import java.util.EnumSet;

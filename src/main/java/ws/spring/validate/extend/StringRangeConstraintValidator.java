@@ -1,4 +1,4 @@
-package ws.spring.validate.support;
+package ws.spring.validate.extend;
 
 import java.util.Set;
 import java.util.stream.Collectors;
