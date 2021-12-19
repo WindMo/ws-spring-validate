@@ -3,7 +3,6 @@ package ws.spring.validate.hiddenskills;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import ws.spring.validate.pojo.Box;
 import ws.spring.validate.pojo.Person;
 
 import javax.validation.Valid;
