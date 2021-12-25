@@ -8,7 +8,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.ElementType.TYPE_USE;
 
 /**
  * 字符串元素范围约束注解，使用方式如下（以Spring环境示例）：
@@ -38,7 +37,10 @@ public @interface StringRange {
      */
     String[] value();
 
-    /** 消息，一般在此预置国际化所需的code */
+    boolean trim() default false;
+
+    boolean ignoreCase() default false;
+
     String message() default "{ws.spring.validate.extend.StringRange.message}";
 
     Class<?>[] groups() default {};

@@ -39,4 +39,26 @@ public class ValidateStringRangeSupportServiceTests extends WsSpringValidateAppl
         ValidationException e = Assertions.assertThrows(ValidationException.class, () -> stringRangeSupportService.validateStringRangeErrorWithoutRange("123"));
         log.info("ValidationException: {}",e.getMessage());
     }
+
+    @Test
+    public void validateStringRangeTrim() {
+
+        LocaleContextHolder.setLocale(Locale.CHINA);
+
+        Assertions.assertDoesNotThrow(() -> stringRangeSupportService.validateStringRangeTrim("aaa "));
+        Assertions.assertDoesNotThrow(() -> stringRangeSupportService.validateStringRangeTrim(" bbb"));
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> stringRangeSupportService.validateStringRangeTrim("ccc "));
+        log.info("ConstraintViolationException: {}",e.getMessage());
+    }
+
+    @Test
+    public void validateStringRangeIgnoreCase() {
+
+        LocaleContextHolder.setLocale(Locale.CHINA);
+
+        Assertions.assertDoesNotThrow(() -> stringRangeSupportService.validateStringRangeIgnoreCase("AAA"));
+        Assertions.assertDoesNotThrow(() -> stringRangeSupportService.validateStringRangeIgnoreCase("bBb"));
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> stringRangeSupportService.validateStringRangeIgnoreCase("ccc"));
+        log.info("ConstraintViolationException: {}",e.getMessage());
+    }
 }

@@ -1,5 +1,6 @@
 package ws.spring.validate.extend;
 
+import javax.validation.ConstraintValidatorContext;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -12,9 +13,26 @@ import java.util.stream.Stream;
 
 public class StringRangeConstraintValidator extends AbstractElementRangeConstraintValidator<StringRange,String> {
 
+    private boolean trim;
+    private boolean ignoreCase;
+
     @Override
     protected Set<String> getElements(StringRange stringRange) {
 
-       return Stream.of(stringRange.value()).collect(Collectors.toSet());
+        this.trim = stringRange.trim();
+        this.ignoreCase = stringRange.ignoreCase();
+        return Stream.of(stringRange.value()).map(this::applyValue).collect(Collectors.toSet());
+    }
+
+    @Override
+    public boolean isValid(String value, ConstraintValidatorContext context) {
+
+        return super.isValid(applyValue(value), context);
+    }
+
+    private String applyValue(String value) {
+
+        String v = trim ? value.trim() : value;
+        return ignoreCase ? v.toUpperCase() : v;
     }
 }

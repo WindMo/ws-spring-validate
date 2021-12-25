@@ -23,4 +23,14 @@ public class ValidateStringRangeSupportService {
 
         log.info("str: {}",str);
     }
+
+    public void validateStringRangeTrim(@StringRange(value = {"aaa","bbb"},trim = true) String str) {
+
+        log.info("str: {}",str);
+    }
+
+    public void validateStringRangeIgnoreCase(@StringRange(value = {"aaa","bbb"},ignoreCase = true) String str) {
+
+        log.info("str: {}",str);
+    }
 }
