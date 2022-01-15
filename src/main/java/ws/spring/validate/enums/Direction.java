@@ -1,7 +1,7 @@
 package ws.spring.validate.enums;
 
 /**
- * 方向注解
+ * 方向枚举
  * @author WindShadow
  * @version 2021-12-16.
  */
