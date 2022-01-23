@@ -38,4 +38,14 @@ public class ChangeConstraintWhenExtendsTests extends WsSpringValidateApplicatio
         ConstraintDeclarationException e = Assertions.assertThrows(ConstraintDeclarationException.class, () -> changeConstraintWhenExtends.doSomethingReturn());
         log.info("ConstraintViolationException: {}",e.getMessage());
     }
+
+    /**
+     * 失败，抛出约束声明异常
+     */
+    @Test
+    public void returnIntTest() {
+
+        ConstraintDeclarationException e = Assertions.assertThrows(ConstraintDeclarationException.class, () -> changeConstraintWhenExtends.returnInt());
+        log.info("ConstraintViolationException: {}",e.getMessage());
+    }
 }

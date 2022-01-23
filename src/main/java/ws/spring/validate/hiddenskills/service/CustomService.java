@@ -1,5 +1,7 @@
 package ws.spring.validate.hiddenskills.service;
 
+import javax.validation.constraints.Min;
+
 /**
  * 模拟一个业务接口
  * @author WindShadow
@@ -19,4 +21,7 @@ public interface CustomService {
      * @return
      */
     String doSomethingReturn();
+
+    @Min(10)
+    int returnInt();
 }

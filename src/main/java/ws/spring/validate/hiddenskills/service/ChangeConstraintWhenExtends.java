@@ -43,4 +43,15 @@ public class ChangeConstraintWhenExtends implements CustomService{
     public String doSomethingReturn() {
         return " ";
     }
+
+    /**
+     * 继承接口，不改方法返回值验证约束
+     * @return
+     * @deprecated 检验时抛出{@link javax.validation.ConstraintDeclarationException}约束声明异常
+     */
+    @Override
+    @Deprecated
+    public /* @Min(10) */ int returnInt() {
+        return 0;
+    }
 }
