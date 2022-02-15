@@ -25,6 +25,9 @@ public class Computer {
     @NotNull(groups = Group.Update.class) // 更新时必定不为空
     private Integer id;
 
+    /**
+     * 未指定分组的约束，默认属于 {@linkplain javax.validation.groups.Default default组}
+     */
     @Length(min = 100)
     private String name;
 }
