@@ -5,10 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
+import ws.spring.validate.group.CompanyGroup;
 import ws.spring.validate.group.Group;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import javax.validation.groups.ConvertGroup;
 
 /**
  * @author WindShadow
@@ -30,4 +33,11 @@ public class Computer {
      */
     @Length(min = 100)
     private String name;
+
+    /**
+     * 级联校验时，{@link ConvertGroup}将{@linkplain Group.Insert Insert组}转为{@linkplain CompanyGroup.Chain Chain组}往下校验
+     */
+    @Valid
+    @ConvertGroup(from = Group.Insert.class, to = CompanyGroup.Chain.class)
+    private Company company;
 }

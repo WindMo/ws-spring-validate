@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ws.spring.validate.WsSpringValidateApplicationTests;
+import ws.spring.validate.pojo.Company;
 
 import javax.validation.ConstraintViolationException;
 
@@ -30,5 +31,12 @@ public class GroupValidateOfServiceTests extends WsSpringValidateApplicationTest
     public void groupValidateBasicDelete() {
 
         Assertions.assertDoesNotThrow(() -> serviceBean.groupValidateBasicDelete("  "));
+    }
+
+    @Test
+    public void groupValidateConvertGroupTest() {
+
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.groupValidateConvertGroup(new Company(null,"email")));
+        log.info("ConstraintViolationException: {}",e.getMessage());
     }
 }
