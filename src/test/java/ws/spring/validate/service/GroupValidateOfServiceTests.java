@@ -24,7 +24,7 @@ public class GroupValidateOfServiceTests extends WsSpringValidateApplicationTest
     public void groupValidateBasicQuery() {
 
         ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.groupValidateBasicQuery("  "));
-        log.info("ConstraintViolationException: {}",e.getMessage());
+        log.info("ConstraintViolationException: {}", e.getMessage());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class GroupValidateOfServiceTests extends WsSpringValidateApplicationTest
     @Test
     public void groupValidateConvertGroupTest() {
 
-        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.groupValidateConvertGroup(new Company(null,"email")));
-        log.info("ConstraintViolationException: {}",e.getMessage());
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.groupValidateConvertGroup(new Company(null, "email")));
+        log.info("ConstraintViolationException: {}", e.getMessage());
     }
 }
