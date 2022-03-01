@@ -46,9 +46,10 @@ public class BeanValidController {
      * {@link Valid}注解修饰方法参数，bean类型集合，无效
      * @param personList
      * @return
+     * @deprecated 无效
      */
-    @Deprecated
     @PostMapping("/method-param-bean-collection")
+    @Deprecated
     public String validatedMethodParamBeaCollection(@Valid @RequestBody List<Person> personList) {
 
         log.info("personList: {}",personList);
@@ -86,7 +87,7 @@ public class BeanValidController {
 
     /**
      * {@link Valid}注解修饰方法参数，bean类型，级联校验
-     * @param people {@link People#getWrapper()} ()}被{@link Valid}修饰，触发级联校验，如不用{@link Valid}修饰，则不会校验该属性
+     * @param people {@link People#getWrapper()}被{@link Valid}修饰，触发级联校验，如不用{@link Valid}修饰，则不会校验该属性
      * @return
      */
     @PostMapping("/method-param-bean/deep")
