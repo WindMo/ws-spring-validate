@@ -26,7 +26,7 @@ public class MoneyCollectionValidator implements Validator {
 
         if (target instanceof Collection) {
 
-            Collection collection = ((Collection)target);
+            Collection collection = ((Collection) target);
             int i = 0;
             for (Object o : collection) {
 

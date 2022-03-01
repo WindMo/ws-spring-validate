@@ -1,5 +1,6 @@
 /**
  * Spring校验体系示例与解读
+ *
  * @author WindShadow
  * @version 2021-11-14.
  */
@@ -64,7 +65,7 @@ class ValidateHelper implements ApplicationContextAware, ApplicationRunner {
 
         Object bean = this.applicationContext.getBean(clazz);
         // 打印bean 预期Class、真实Class、bean.toString 的内容
-        log.info("Bean - IsAop: {} Class: {} RelClass: {} ToString: {}", AopUtils.isAopProxy(bean), clazz.getTypeName(),bean.getClass().getTypeName(),bean);
+        log.info("Bean - IsAop: {} Class: {} RelClass: {} ToString: {}", AopUtils.isAopProxy(bean), clazz.getTypeName(), bean.getClass().getTypeName(), bean);
     }
 
 }

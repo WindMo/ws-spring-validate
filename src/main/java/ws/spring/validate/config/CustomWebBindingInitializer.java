@@ -3,18 +3,17 @@ package ws.spring.validate.config;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.validation.SmartValidator;
 import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
 import org.springframework.web.bind.support.WebBindingInitializer;
 
 import javax.annotation.PostConstruct;
-import java.util.Collection;
 import java.util.List;
 
 /**
  * web数据绑定期间的配置
+ *
  * @author WindShadow
  * @version 2021-11-16.
  */
@@ -34,6 +33,7 @@ public class CustomWebBindingInitializer extends ConfigurableWebBindingInitializ
     /**
      * 通过遍历注入{@link #validators}的集合，如果支持当前绑定对象的类型，则加入绑定器，
      * 如果添加了不支持的校验器，则在校验时将抛出状态异常
+     *
      * @param binder
      */
     @Override

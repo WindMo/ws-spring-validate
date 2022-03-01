@@ -9,10 +9,11 @@ import javax.validation.Valid;
 
 /**
  * 自定义校验注解测试service
- * @see Car
- * @see ws.spring.validate.annotation.Color
+ *
  * @author WindShadow
  * @version 2021-11-16.
+ * @see Car
+ * @see ws.spring.validate.annotation.Color
  */
 
 @Slf4j
@@ -22,10 +23,11 @@ public class ValidateCustomAnnotation {
 
     /**
      * {@link Car#getColor()}的属性校验测试
+     *
      * @param car
      */
     public void validateColorOfCar(@Valid Car car) {
 
-        log.info("car: {}",car);
+        log.info("car: {}", car);
     }
 }

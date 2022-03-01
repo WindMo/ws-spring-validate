@@ -5,7 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ws.spring.validate.util.ValidateUtils;
 
 import javax.validation.ConstraintViolation;
@@ -35,23 +37,23 @@ public class ValidateControllerAdvice {
         if (e instanceof MethodArgumentNotValidException) {
 
             exType = "MethodArgumentNotValidException";
-            bindingResult = ((MethodArgumentNotValidException)e).getBindingResult();
+            bindingResult = ((MethodArgumentNotValidException) e).getBindingResult();
             detail = ValidateUtils.cleanUpBindingResult(bindingResult);
         } else if (e instanceof BindException) {
 
             exType = "BindException";
-            bindingResult = ((BindException)e).getBindingResult();
+            bindingResult = ((BindException) e).getBindingResult();
             detail = ValidateUtils.cleanUpBindingResult(bindingResult);
-        }else if (e instanceof ConstraintViolationException) {
+        } else if (e instanceof ConstraintViolationException) {
 
             exType = "ConstraintViolationException";
-            Set<ConstraintViolation<?>> constraintViolationSet  = ((ConstraintViolationException)e).getConstraintViolations();
+            Set<ConstraintViolation<?>> constraintViolationSet = ((ConstraintViolationException) e).getConstraintViolations();
             detail = ValidateUtils.cleanUpBindingResult(constraintViolationSet);
-        }else {
+        } else {
             // @ExceptionHandler注解限定了异常类型，此句不可能被执行到
             throw new RuntimeException("未知异常");
         }
-        log.info("捕获到异常：{},detail: {}",exType,detail);
-        return "捕获到异常：" + exType +" " + detail;
+        log.info("捕获到异常：{},detail: {}", exType, detail);
+        return "捕获到异常：" + exType + " " + detail;
     }
 }

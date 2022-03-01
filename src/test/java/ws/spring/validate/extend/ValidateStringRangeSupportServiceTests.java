@@ -30,14 +30,14 @@ public class ValidateStringRangeSupportServiceTests extends WsSpringValidateAppl
         Assertions.assertDoesNotThrow(() -> stringRangeSupportService.validateStringRange("aaa"));
         Assertions.assertDoesNotThrow(() -> stringRangeSupportService.validateStringRange("bbb"));
         ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> stringRangeSupportService.validateStringRange("ccc"));
-        log.info("ConstraintViolationException: {}",e.getMessage());
+        log.info("ConstraintViolationException: {}", e.getMessage());
     }
 
     @Test
     public void validateStringRangeErrorWithoutRange() {
 
         ValidationException e = Assertions.assertThrows(ValidationException.class, () -> stringRangeSupportService.validateStringRangeErrorWithoutRange("123"));
-        log.info("ValidationException: {}",e.getMessage());
+        log.info("ValidationException: {}", e.getMessage());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class ValidateStringRangeSupportServiceTests extends WsSpringValidateAppl
         Assertions.assertDoesNotThrow(() -> stringRangeSupportService.validateStringRangeTrim("aaa "));
         Assertions.assertDoesNotThrow(() -> stringRangeSupportService.validateStringRangeTrim(" bbb"));
         ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> stringRangeSupportService.validateStringRangeTrim("ccc "));
-        log.info("ConstraintViolationException: {}",e.getMessage());
+        log.info("ConstraintViolationException: {}", e.getMessage());
     }
 
     @Test
@@ -59,6 +59,6 @@ public class ValidateStringRangeSupportServiceTests extends WsSpringValidateAppl
         Assertions.assertDoesNotThrow(() -> stringRangeSupportService.validateStringRangeIgnoreCase("AAA"));
         Assertions.assertDoesNotThrow(() -> stringRangeSupportService.validateStringRangeIgnoreCase("bBb"));
         ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> stringRangeSupportService.validateStringRangeIgnoreCase("ccc"));
-        log.info("ConstraintViolationException: {}",e.getMessage());
+        log.info("ConstraintViolationException: {}", e.getMessage());
     }
 }

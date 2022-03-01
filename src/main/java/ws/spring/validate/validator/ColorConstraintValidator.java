@@ -11,13 +11,14 @@ import java.util.stream.Stream;
 /**
  * 自定义注解的约束校验器
  * Color约束校验器
+ *
  * @author WindShadow
  * @version 2021-11-14.
  */
 
-public class ColorConstraintValidator implements ConstraintValidator<Color,String> {
+public class ColorConstraintValidator implements ConstraintValidator<Color, String> {
 
-    private static final Set<String> COLORS = Stream.of(Color.BLUE,Color.GREEN,Color.RED,Color.YELLOW).collect(Collectors.toSet());
+    private static final Set<String> COLORS = Stream.of(Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW).collect(Collectors.toSet());
     private String message;
 
     @Override

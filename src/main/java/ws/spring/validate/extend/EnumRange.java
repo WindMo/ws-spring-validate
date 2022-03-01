@@ -26,6 +26,7 @@ import static java.lang.annotation.ElementType.*;
  * </pre>
  * 当枚举参数<code>param</code>不为"JIN","MU","SHUI"之一时，则校验不通过，反之通过
  * <p>当{@link EnumRange}修饰的参数类型和{@link EnumRange#enumType()}不一致时，将在校验时抛出异常，开发者需要注意
+ *
  * @author WindShadow
  * @version 2021-12-16.
  * @see EnumRangeRangeConstraintValidator
@@ -37,11 +38,14 @@ import static java.lang.annotation.ElementType.*;
 @Constraint(validatedBy = {EnumRangeRangeConstraintValidator.class})
 public @interface EnumRange {
 
-    /** 枚举类型 */
+    /**
+     * 枚举类型
+     */
     Class<? extends Enum<?>> enumType();
 
     /**
      * 枚举名称数组，其中的字符串必须是可以通过{@link Enum#valueOf(Class, String)}方法可以得到枚举实例的枚举名称
+     *
      * @return enums 至少必须配置一个元素
      */
     String[] enums();
@@ -49,5 +53,6 @@ public @interface EnumRange {
     String message() default "{ws.spring.validate.extend.EnumRange.message}";
 
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

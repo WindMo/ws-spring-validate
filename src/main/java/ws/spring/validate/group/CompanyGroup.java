@@ -7,7 +7,9 @@ package ws.spring.validate.group;
 
 public class CompanyGroup {
 
-    public interface Chain {}
+    public interface Chain {
+    }
 
-    public interface Overseas {}
+    public interface Overseas {
+    }
 }

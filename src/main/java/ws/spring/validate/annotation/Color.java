@@ -27,12 +27,18 @@ public @interface Color {
     String YELLOW = "yellow";
     String GREEN = "green";
 
-    /** 消息，一般在此预置国际化所需的code */
+    /**
+     * 消息，一般在此预置国际化所需的code
+     */
     String message() default "{ws.spring.validate.annotation.Color.message}";
 
-    /** 依据class分组，该属性必须有 */
+    /**
+     * 依据class分组，该属性必须有
+     */
     Class<?>[] groups() default {};
 
-    /** Payload不清楚，该属性必须有 */
+    /**
+     * Payload不清楚，该属性必须有
+     */
     Class<? extends Payload>[] payload() default {};
 }

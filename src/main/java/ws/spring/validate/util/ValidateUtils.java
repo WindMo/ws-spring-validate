@@ -5,7 +5,6 @@ import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 
 import javax.validation.ConstraintViolation;
-import java.io.Serializable;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.Set;
@@ -18,16 +17,18 @@ import java.util.stream.Collectors;
 
 public class ValidateUtils {
 
-    /** 国际化消息转换对象 */
+    private static final MessageFormat CONSTRAINT_VIOLATION_FAILED_MESSAGE_FORMAT = new MessageFormat("校验属性：{0}，校验值：{1}，失败原因：{2}");
+    /**
+     * 国际化消息转换对象
+     */
     private static MessageSource messageSource;
+
     public static synchronized void setMessageSource(MessageSource messageSource) {
 
-        Assert.notNull(messageSource,"messageSource is null");
-        Assert.isNull(ValidateUtils.messageSource,"ValidateUtils.messageSource is not null");
+        Assert.notNull(messageSource, "messageSource is null");
+        Assert.isNull(ValidateUtils.messageSource, "ValidateUtils.messageSource is not null");
         ValidateUtils.messageSource = messageSource;
     }
-
-    private static final MessageFormat CONSTRAINT_VIOLATION_FAILED_MESSAGE_FORMAT = new MessageFormat("校验属性：{0}，校验值：{1}，失败原因：{2}");
 
     public static String cleanUpBindingResult(BindingResult bindingResult) {
 
@@ -35,7 +36,7 @@ public class ValidateUtils {
                 .getAllErrors()
                 .stream()
                 // 错误信息国际化
-                .map(e -> e.getObjectName() + ": " + messageSource.getMessage(e.getCode(),e.getArguments(),e.getDefaultMessage(), Locale.CHINA))
+                .map(e -> e.getObjectName() + ": " + messageSource.getMessage(e.getCode(), e.getArguments(), e.getDefaultMessage(), Locale.CHINA))
                 .collect(Collectors.joining(";"));
     }
 

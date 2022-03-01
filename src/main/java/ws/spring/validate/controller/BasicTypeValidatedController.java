@@ -12,6 +12,7 @@ import javax.validation.constraints.Email;
 /**
  * 在Controller控制器中校验【简单类型】，关键：类上加{@link Validated}注解
  * 写法和{@link ws.spring.validate.service.ValidateServiceMethodParam}是一样的
+ *
  * @author WindShadow
  * @version 2021-11-15.
  * @see ws.spring.validate.service.ValidateServiceMethodParam
@@ -25,6 +26,7 @@ public class BasicTypeValidatedController {
 
     /**
      * 校验方法参数，简单类型
+     *
      * @param email
      * @return
      * @see BeanValidatedController#validatedMethodParamBasic(String) 对比
@@ -32,12 +34,13 @@ public class BasicTypeValidatedController {
     @GetMapping("/basic-hit")
     public String validatedMethodParamBasicHit(@Email(groups = Group.Query.class) String email) {
 
-        log.info("email: {}",email);
+        log.info("email: {}", email);
         return String.valueOf(email);
     }
 
     /**
      * 校验方法参数，简单类型
+     *
      * @param email
      * @return
      * @see BeanValidatedController#validatedMethodParamBasic(String) 对比
@@ -45,7 +48,7 @@ public class BasicTypeValidatedController {
     @GetMapping("/basic-miss")
     public String validatedMethodParamBasicMiss(@Email(groups = Group.Update.class) String email) {
 
-        log.info("email: {}",email);
+        log.info("email: {}", email);
         return String.valueOf(email);
     }
 }

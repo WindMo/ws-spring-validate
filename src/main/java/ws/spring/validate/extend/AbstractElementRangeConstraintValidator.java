@@ -7,11 +7,12 @@ import java.util.Set;
 
 /**
  * 元素范围约束检验器抽象实现
+ *
  * @author WindShadow
  * @version 2021-12-16.
  */
 
-public abstract class AbstractElementRangeConstraintValidator<A extends Annotation,T> implements ConstraintValidator<A,T> {
+public abstract class AbstractElementRangeConstraintValidator<A extends Annotation, T> implements ConstraintValidator<A, T> {
 
     private Set<T> elements;
 
@@ -20,7 +21,7 @@ public abstract class AbstractElementRangeConstraintValidator<A extends Annotati
 
         elements = getElements(constraintAnnotation);
         if (elements.isEmpty()) {
-            throw new IllegalStateException("The elements in the <"+ constraintAnnotation.getClass().getName() + "> annotation must contain at least one element");
+            throw new IllegalStateException("The elements in the <" + constraintAnnotation.getClass().getName() + "> annotation must contain at least one element");
         }
     }
 
@@ -29,7 +30,7 @@ public abstract class AbstractElementRangeConstraintValidator<A extends Annotati
 
         if (!elements.contains(value)) {
 
-            invalid(value,context);
+            invalid(value, context);
             return false;
         }
         return true;
@@ -37,6 +38,7 @@ public abstract class AbstractElementRangeConstraintValidator<A extends Annotati
 
     /**
      * 从注解中获取元素的Set集合
+     *
      * @param constraintAnnotation constraintAnnotation
      * @return {@link Set#isEmpty()}必须为false
      */
@@ -44,7 +46,8 @@ public abstract class AbstractElementRangeConstraintValidator<A extends Annotati
 
     /**
      * 校验不通过时调用
-     * @param value value
+     *
+     * @param value   value
      * @param context ConstraintValidatorContext
      */
     protected void invalid(T value, ConstraintValidatorContext context) {

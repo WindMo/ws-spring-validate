@@ -27,6 +27,7 @@ public class GroupSequenceValidateService {
     /**
      * 定义一个组并指定校验顺序
      */
-    @GroupSequence({Group.Insert.class,Group.Update.class})
-    interface MyGroup {}
+    @GroupSequence({Group.Insert.class, Group.Update.class})
+    interface MyGroup {
+    }
 }

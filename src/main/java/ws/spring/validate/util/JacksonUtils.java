@@ -15,9 +15,9 @@ public class JacksonUtils {
     public static <T> T toObject(String jsonText, Class<T> clazz) {
 
         try {
-            return OBJECT_MAPPER.readValue(jsonText,clazz);
+            return OBJECT_MAPPER.readValue(jsonText, clazz);
         } catch (JsonProcessingException e) {
-            throw new UnsupportedOperationException("json转换失败",e);
+            throw new UnsupportedOperationException("json转换失败", e);
         }
     }
 
@@ -26,7 +26,7 @@ public class JacksonUtils {
         try {
             return OBJECT_MAPPER.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            throw new UnsupportedOperationException("json转换失败",e);
+            throw new UnsupportedOperationException("json转换失败", e);
         }
     }
 }

@@ -26,6 +26,6 @@ public class CustomValidateGenerics {
     @Deprecated
     public void validateGenericsOfJavaBean(Box<@NotBlank String> box) {
 
-        log.info("box: {}",box);
+        log.info("box: {}", box);
     }
 }

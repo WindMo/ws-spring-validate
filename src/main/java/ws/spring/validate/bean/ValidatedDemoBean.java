@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * 使用{@link Validated} 修饰bean，在IOC创建bean时进行校验
+ *
  * @author WindShadow
  * @version 2021-11-14.
  */

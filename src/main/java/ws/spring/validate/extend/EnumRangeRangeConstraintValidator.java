@@ -6,12 +6,13 @@ import java.util.Set;
 
 /**
  * 枚举元素约束校验器
+ *
  * @author WindShadow
  * @version 2021-12-16.
  */
 
 @SuppressWarnings({"rawtypes"})
-public class EnumRangeRangeConstraintValidator extends AbstractElementRangeConstraintValidator<EnumRange,Enum> {
+public class EnumRangeRangeConstraintValidator extends AbstractElementRangeConstraintValidator<EnumRange, Enum> {
 
     private Class<? extends Enum> type;
 
@@ -30,6 +31,7 @@ public class EnumRangeRangeConstraintValidator extends AbstractElementRangeConst
     /**
      * 根据指定的枚举类型{@link EnumRange#enumType()}和枚举名称{@link EnumRange#enums()}
      * 调用{@link Enum#valueOf(Class, String)}返回对应的枚举实例集合
+     *
      * @param enumRange
      * @return
      */
@@ -42,7 +44,7 @@ public class EnumRangeRangeConstraintValidator extends AbstractElementRangeConst
         EnumSet enumSet = EnumSet.noneOf(type);
         for (String element : elements) {
 
-            Enum e = Enum.valueOf(type,element);
+            Enum e = Enum.valueOf(type, element);
             enumSet.add(e);
         }
         return enumSet;

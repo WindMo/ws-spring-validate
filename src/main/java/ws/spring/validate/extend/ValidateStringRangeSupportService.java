@@ -13,24 +13,24 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 @Service
 public class ValidateStringRangeSupportService {
-    
-    public void validateStringRange(@StringRange({"aaa","bbb"}) String str) {
 
-        log.info("str: {}",str);
+    public void validateStringRange(@StringRange({"aaa", "bbb"}) String str) {
+
+        log.info("str: {}", str);
     }
 
     public void validateStringRangeErrorWithoutRange(@StringRange({}) String str) {
 
-        log.info("str: {}",str);
+        log.info("str: {}", str);
     }
 
-    public void validateStringRangeTrim(@StringRange(value = {"aaa","bbb"},trim = true) String str) {
+    public void validateStringRangeTrim(@StringRange(value = {"aaa", "bbb"}, trim = true) String str) {
 
-        log.info("str: {}",str);
+        log.info("str: {}", str);
     }
 
-    public void validateStringRangeIgnoreCase(@StringRange(value = {"aaa","bbb"},ignoreCase = true) String str) {
+    public void validateStringRangeIgnoreCase(@StringRange(value = {"aaa", "bbb"}, ignoreCase = true) String str) {
 
-        log.info("str: {}",str);
+        log.info("str: {}", str);
     }
 }

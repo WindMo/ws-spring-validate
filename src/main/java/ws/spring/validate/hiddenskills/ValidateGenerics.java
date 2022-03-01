@@ -14,6 +14,7 @@ import java.util.Map;
 
 /**
  * 隐藏技巧之校验泛型
+ *
  * @author WindShadow
  * @date 2021-11-19.
  * @see ws.spring.validate.service.ValidateServiceMethodParam#validateCollectionByValidAnnotation(List) 对比校验bean集合
@@ -31,7 +32,7 @@ public class ValidateGenerics {
      */
     public void validateGenericsOfIntegerCollection(List<@Min(100) Integer> integerList) {
 
-        log.info("integerList: {}",integerList);
+        log.info("integerList: {}", integerList);
     }
 
     /**
@@ -41,7 +42,7 @@ public class ValidateGenerics {
      */
     public void validateGenericsOfStringCollection(List<@NotBlank String> stringList) {
 
-        log.info("stringList: {}",stringList);
+        log.info("stringList: {}", stringList);
     }
 
     /**
@@ -52,7 +53,7 @@ public class ValidateGenerics {
      */
     public void validateGenericsOfBeanCollection(List<@Valid Person> personList) {
 
-        log.info("personList: {}",personList);
+        log.info("personList: {}", personList);
     }
 
     /**
@@ -62,7 +63,7 @@ public class ValidateGenerics {
      */
     public void validateGenericsOfEmbeddedCollection(List<@NotEmpty List<Object>> embeddedList) {
 
-        log.info("embeddedList: {}",embeddedList);
+        log.info("embeddedList: {}", embeddedList);
     }
 
     /**
@@ -72,7 +73,7 @@ public class ValidateGenerics {
      */
     public void validateGenericsOfEmbeddedIntegerCollection(List<List<@Min(100) Integer>> embeddedIntegerList) {
 
-        log.info("embeddedIntegerList: {}",embeddedIntegerList);
+        log.info("embeddedIntegerList: {}", embeddedIntegerList);
     }
 
     /**
@@ -80,9 +81,9 @@ public class ValidateGenerics {
      *
      * @param map
      */
-    public void validateGenericsOfMapIntegerKey(Map<@Min(100) Integer,Object> map) {
+    public void validateGenericsOfMapIntegerKey(Map<@Min(100) Integer, Object> map) {
 
-        log.info("map: {}",map);
+        log.info("map: {}", map);
     }
 
     /**
@@ -90,9 +91,9 @@ public class ValidateGenerics {
      *
      * @param map
      */
-    public void validateGenericsOfMapIntegerValue(Map<Object,@Min(100) Integer> map) {
+    public void validateGenericsOfMapIntegerValue(Map<Object, @Min(100) Integer> map) {
 
-        log.info("map: {}",map);
+        log.info("map: {}", map);
     }
 
     /**
@@ -100,9 +101,9 @@ public class ValidateGenerics {
      *
      * @param map
      */
-    public void validateGenericsOfMapBeanKey(Map<@Valid Person,Object> map) {
+    public void validateGenericsOfMapBeanKey(Map<@Valid Person, Object> map) {
 
-        log.info("map: {}",map);
+        log.info("map: {}", map);
     }
 
     /**
@@ -110,8 +111,8 @@ public class ValidateGenerics {
      *
      * @param map
      */
-    public void validateGenericsOfMapBeanValue(Map<Object,@Valid Person> map) {
+    public void validateGenericsOfMapBeanValue(Map<Object, @Valid Person> map) {
 
-        log.info("map: {}",map);
+        log.info("map: {}", map);
     }
 }

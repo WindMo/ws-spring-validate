@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * 继承或实现接口时修改方法约束
+ *
  * @author WindShadow
  * @date 2021-11-20.
  */
@@ -16,19 +17,18 @@ import javax.validation.constraints.NotBlank;
 @Slf4j
 @Validated
 @Service
-public class ChangeConstraintWhenExtends implements CustomService{
+public class ChangeConstraintWhenExtends implements CustomService {
 
     /**
      * 修改方法参数验证约束
      *
      * @param number
      * @deprecated 检验时抛出{@link javax.validation.ConstraintDeclarationException}约束声明异常
-     *
      */
     @Override
     @Deprecated
     public void doSomethingParam(@Min(100) Integer number) {
-        log.info("number: {}",number);
+        log.info("number: {}", number);
     }
 
     /**
@@ -46,6 +46,7 @@ public class ChangeConstraintWhenExtends implements CustomService{
 
     /**
      * 继承接口，不改方法返回值验证约束
+     *
      * @return
      * @deprecated 检验时抛出{@link javax.validation.ConstraintDeclarationException}约束声明异常
      */

@@ -7,11 +7,12 @@ import java.util.stream.Stream;
 
 /**
  * 字符串元素范围约束检验器
+ *
  * @author WindShadow
  * @version 2021-12-16.
  */
 
-public class StringRangeConstraintValidator extends AbstractElementRangeConstraintValidator<StringRange,String> {
+public class StringRangeConstraintValidator extends AbstractElementRangeConstraintValidator<StringRange, String> {
 
     private boolean trim;
     private boolean ignoreCase;

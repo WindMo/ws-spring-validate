@@ -7,6 +7,7 @@ import ws.spring.validate.annotation.LetterText;
 
 /**
  * 组合注解使用示例
+ *
  * @author WindShadow
  * @version 2021-12-17.
  */
@@ -17,10 +18,10 @@ import ws.spring.validate.annotation.LetterText;
 public class CombinationAnnotationService {
 
     public void validateLetterText(@LetterText String text) {
-        log.info("text: {}",text);
+        log.info("text: {}", text);
     }
 
     public void validateLetterTextCustomOption(@LetterText(min = 2) String text) {
-        log.info("text: {}",text);
+        log.info("text: {}", text);
     }
 }

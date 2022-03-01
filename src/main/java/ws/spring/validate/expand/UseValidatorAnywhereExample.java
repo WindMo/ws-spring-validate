@@ -18,6 +18,7 @@ import java.util.Set;
 
 /**
  * 在任何地方使用Spring的约束校验功能完成业务校验
+ *
  * @author WindShadow
  * @date 2021-11-18.
  */
@@ -39,34 +40,17 @@ public class UseValidatorAnywhereExample {
     @Autowired
     protected LocalValidatorFactoryBean localValidatorFactoryBean;
 
-    public boolean validateBeanByValidatorFactory(String personText) {
-
-        // javax包下的校验器而不是Spring的校验器
-        Validator javaxValidator = validatorFactory.getValidator();
-        return doValidate(personText,javaxValidator);
-    }
-
-    public boolean validateBeanByDefaultValidatorBean(String personText) {
-
-        return doValidate(personText,defaultValidator);
-    }
-
-    public boolean validateBeanByLocalValidatorFactoryBean(String personText) {
-
-        return doValidate(personText,localValidatorFactoryBean);
-    }
-
     private static boolean doValidate(String personText, Validator javaxValidator) {
 
-        Person person = JacksonUtils.toObject(personText,Person.class);
+        Person person = JacksonUtils.toObject(personText, Person.class);
         // 校验结果
         Set<ConstraintViolation<Person>> violations = javaxValidator.validate(person);
         if (violations.isEmpty()) {
             // 为空则校验通过
             return true;
-        }else {
+        } else {
 
-            log.info("校验【{}】失败：{}",personText,ValidateUtils.cleanUpBindingResultByGeneric(violations));
+            log.info("校验【{}】失败：{}", personText, ValidateUtils.cleanUpBindingResultByGeneric(violations));
             return false;
         }
     }
@@ -75,6 +59,23 @@ public class UseValidatorAnywhereExample {
 
         ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
         Validator validator = validatorFactory.getValidator();
-        return doValidate(personText,validator);
+        return doValidate(personText, validator);
+    }
+
+    public boolean validateBeanByValidatorFactory(String personText) {
+
+        // javax包下的校验器而不是Spring的校验器
+        Validator javaxValidator = validatorFactory.getValidator();
+        return doValidate(personText, javaxValidator);
+    }
+
+    public boolean validateBeanByDefaultValidatorBean(String personText) {
+
+        return doValidate(personText, defaultValidator);
+    }
+
+    public boolean validateBeanByLocalValidatorFactoryBean(String personText) {
+
+        return doValidate(personText, localValidatorFactoryBean);
     }
 }
