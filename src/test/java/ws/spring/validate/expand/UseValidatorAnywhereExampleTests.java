@@ -30,6 +30,7 @@ public class UseValidatorAnywhereExampleTests extends WsSpringValidateApplicatio
 
     /**
      * defaultValidator == localValidatorFactoryBea == validatorFactory
+     *
      * @see org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration#defaultValidator()
      */
     @Test
