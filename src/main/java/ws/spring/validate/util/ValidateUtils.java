@@ -3,6 +3,7 @@ package ws.spring.validate.util;
 import org.springframework.context.MessageSource;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 
 import javax.validation.ConstraintViolation;
 import java.text.MessageFormat;
@@ -36,7 +37,15 @@ public class ValidateUtils {
                 .getAllErrors()
                 .stream()
                 // 错误信息国际化
-                .map(e -> e.getObjectName() + ": " + messageSource.getMessage(e.getCode(), e.getArguments(), e.getDefaultMessage(), Locale.CHINA))
+                .map(e -> {
+
+                    String felid = "";
+                    if (e instanceof FieldError) {
+
+                        felid = ((FieldError)e).getField();
+                    }
+                    return e.getObjectName() + ":" + felid + ": " + messageSource.getMessage(e.getCode(), e.getArguments(), e.getDefaultMessage(), Locale.CHINA);
+                })
                 .collect(Collectors.joining(";"));
     }
 

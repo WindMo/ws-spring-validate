@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ws.spring.validate.WsSpringValidateApplicationTests;
 import ws.spring.validate.pojo.Company;
+import ws.spring.validate.pojo.Pot;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.Validator;
 
 /**
  * @author WindShadow
@@ -19,6 +21,12 @@ public class GroupValidateOfServiceTests extends WsSpringValidateApplicationTest
 
     @Autowired
     public GroupValidateOfService serviceBean;
+
+    @Autowired
+    public GroupSequenceProviderService providerService;
+
+    @Autowired
+    private Validator validator;
 
     @Test
     public void groupValidateBasicQuery() {
@@ -37,6 +45,27 @@ public class GroupValidateOfServiceTests extends WsSpringValidateApplicationTest
     public void groupValidateConvertGroupTest() {
 
         ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> serviceBean.groupValidateConvertGroup(new Company(null, "email")));
+        log.info("ConstraintViolationException: {}", e.getMessage());
+    }
+
+    @Test
+    public void groupValidateSequenceProviderTest() {
+
+        ConstraintViolationException e;
+        e = Assertions.assertThrows(ConstraintViolationException.class,
+                () -> providerService.groupValidateForSequenceProvider(new Pot(0, "123456", null, 1)));
+        log.info("ConstraintViolationException: {}", e.getMessage());
+
+        e = Assertions.assertThrows(ConstraintViolationException.class,
+                () -> providerService.groupValidateForSequenceProvider(new Pot(0, "123456", "blue", 1)));
+        log.info("ConstraintViolationException: {}", e.getMessage());
+
+        e = Assertions.assertThrows(ConstraintViolationException.class,
+                () -> providerService.groupValidateForSequenceProvider(new Pot(2, "123456", null, 1)));
+        log.info("ConstraintViolationException: {}", e.getMessage());
+
+        e = Assertions.assertThrows(ConstraintViolationException.class,
+                () -> providerService.groupValidateForSequenceProvider(new Pot(2, "123456", "blue", 1)));
         log.info("ConstraintViolationException: {}", e.getMessage());
     }
 }

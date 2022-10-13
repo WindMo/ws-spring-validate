@@ -6,6 +6,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ws.spring.validate.group.Group;
 import ws.spring.validate.pojo.Computer;
+import ws.spring.validate.pojo.Pot;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
@@ -87,5 +88,12 @@ public class GroupValidateOfController {
 
         log.info("computer: {}", computer);
         return String.valueOf(computer);
+    }
+
+    @PostMapping("/dgsp/bean")
+    public String groupValidateForDgsp(@Validated @RequestBody Pot pot) {
+
+        log.info("pot: {}", pot);
+        return String.valueOf(pot);
     }
 }
