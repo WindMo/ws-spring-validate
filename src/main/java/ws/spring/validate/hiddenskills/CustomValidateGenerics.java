@@ -21,9 +21,7 @@ public class CustomValidateGenerics {
      * 校验java类中的泛型，bean类型
      *
      * @param box
-     * @deprecated 无法校验java类中的泛型
      */
-    @Deprecated
     public void validateGenericsOfJavaBean(Box<@NotBlank String> box) {
 
         log.info("box: {}", box);

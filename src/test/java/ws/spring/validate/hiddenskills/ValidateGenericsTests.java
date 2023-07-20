@@ -132,14 +132,14 @@ public class ValidateGenericsTests extends WsSpringValidateApplicationTests {
     }
 
     /**
-     * 失败，抛出约束声明异常 ==> Caused by: javax.validation.ConstraintDeclarationException: HV000197: No value extractor found for type parameter 'T' of type ws.spring.validate.dto.Box
+     * 自定义值提取器
      *
      */
     @Test
     public void validateGenericsOfJavaBean() {
 
         Box<String> box = new Box<>("  ");
-        ConstraintDeclarationException e = Assertions.assertThrows(ConstraintDeclarationException.class, () -> customValidateGenericsBean.validateGenericsOfJavaBean(box));
+        ConstraintViolationException e = Assertions.assertThrows(ConstraintViolationException.class, () -> customValidateGenericsBean.validateGenericsOfJavaBean(box));
         log.info("ConstraintDeclarationException: {}",e.getMessage());
     }
 }

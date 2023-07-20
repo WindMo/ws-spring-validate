@@ -21,7 +21,7 @@ import java.util.List;
  * {@link Validated}在Controller控制器中校验【bean类型】；关键：方法参数上加{@link Validated}注解
  * <p>
  * Spring Bean本身支持【使用{@link Validated}修饰类，使用{@link javax.validation.Valid}或约束注解（如{@link NotBlank}） 修饰方法参数】来进行参数校验，例子见{@link ws.spring.validate.service.ValidateServiceMethodParam}
- * Spring对Controller进行了特殊支持：校验【bean类型】的方法参数时，Controller可直接使用{@link Validated}校验bean类型的方法参数，{@link Validated}支持分组，Controller中推荐使用
+ * Spring对Controller进行了特殊支持：校验【bean类型】的方法参数时，Controller可直接使用{@link Validated}校验bean类型的方法参数，{@link Validated}支持分组，Controller中推荐使用。
  * 不过校验【简单类型】的方法参数时，需要使用原来的套路，如{@link BasicTypeValidatedController}
  * 在Controller控制器，两种套路可以混用
  *
